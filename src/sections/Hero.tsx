@@ -1,75 +1,98 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { GlitchText } from '../components/ui/GlitchText';
-import { NeonButton } from '../components/ui/NeonButton';
-import { ArrowDown, Terminal } from 'lucide-react';
+import { content } from '../data/content';
+import { Button } from '../components/ui/Button';
+import { RevealText } from '../components/ui/RevealText';
+import { ArrowDown } from 'lucide-react';
 
 export const Hero: React.FC = () => {
-    return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col items-center text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-blue/30 bg-neon-blue/10 px-4 py-1.5 text-sm text-neon-blue"
-                    >
-                        <Terminal size={14} />
-                        <span>System Online</span>
-                    </motion.div>
+  const [taglineIndex, setTaglineIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTaglineIndex((prev) => (prev + 1) % content.hero.taglines.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
-                    <motion.h1
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="mb-6 text-6xl font-bold tracking-tighter md:text-8xl lg:text-9xl"
-                    >
-                        <GlitchText text="MANN" className="text-white" />
-                        <br />
-                        <GlitchText text="VASWANI" className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple" />
-                    </motion.h1>
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Ambient center radial gradient */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
+      
+      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+        
+        {/* Placeholder Profile Visual */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="w-24 h-24 mb-8 rounded-full border border-border bg-surface-elevated/50 backdrop-blur object-cover shadow-2xl relative"
+        >
+          {/* Subtle orb inside to simulate avatar */}
+          <div className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-gradient-to-tr from-accent to-purple-500 opacity-80 blur-md" />
+        </motion.div>
 
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="mb-10 max-w-2xl text-lg text-gray-400 md:text-xl"
-                    >
-                        Futuristic Developer & AI Enthusiast. Building next-gen interfaces and intelligent systems.
-                    </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 text-white"
+        >
+          {content.hero.name}
+        </motion.h1>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex flex-col gap-4 sm:flex-row"
-                    >
-                        <NeonButton onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-                            View Projects
-                        </NeonButton>
-                        <NeonButton variant="secondary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                            Contact Me
-                        </NeonButton>
-                    </motion.div>
-                </div>
-            </div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="h-8 mb-8 text-xl md:text-2xl font-mono text-accent"
+        >
+          <motion.span
+            key={taglineIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+          >
+            {content.hero.taglines[taglineIndex]}
+          </motion.span>
+        </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2"
-            >
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="text-neon-blue"
-                >
-                    <ArrowDown size={32} />
-                </motion.div>
-            </motion.div>
-        </section>
-    );
+        <div className="max-w-2xl text-lg text-text-secondary text-balance mb-12">
+          <RevealText text={content.hero.description} />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex gap-4"
+        >
+          <Button onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}>
+            View Work
+          </Button>
+          <Button variant="ghost" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            Contact
+          </Button>
+        </motion.div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="w-px h-12 bg-gradient-to-b from-border to-transparent" />
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="text-text-muted"
+        >
+          <ArrowDown size={16} />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
 };

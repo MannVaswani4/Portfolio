@@ -1,72 +1,82 @@
 import { useEffect, useState } from 'react';
-import { FluidBackground } from './components/ui/FluidBackground';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Sections
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Experience } from './sections/Experience';
+import { Education } from './sections/Education';
 import { Projects } from './sections/Projects';
-import { Leadership } from './sections/Leadership';
-import { Skills } from './sections/Skills';
-import { Awards } from './sections/Awards';
-import { Contact } from './sections/Contact';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { Journey } from './sections/Journey';
+import { ContentShowcase } from './sections/ContentShowcase';
+import { SocialLinks } from './sections/SocialLinks';
+import { Divider } from './components/ui/Divider';
 
 function App() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    // Small delay to ensure smooth entrance
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
-  if (!isLoaded) return null;
-
   return (
-    <main className="relative min-h-screen bg-bg-dark text-white selection:bg-neon-blue/30 selection:text-neon-blue">
-      <FluidBackground />
+    <div className="bg-bg-dark min-h-screen text-text-primary selection:bg-accent/30 selection:text-accent font-sans">
+      <AnimatePresence>
+        {!isLoaded && (
+          <motion.div 
+            exit={{ opacity: 0 }} 
+            className="fixed inset-0 z-50 bg-bg-dark"
+          />
+        )}
+      </AnimatePresence>
 
-      {/* Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink origin-left z-50"
-        style={{ scaleX }}
-      />
-
-      {/* Navigation (Simple floating) */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 px-6 py-3 rounded-full border border-white/10 bg-black/20 backdrop-blur-md hidden md:block">
-        <ul className="flex gap-8 text-sm font-medium text-gray-300">
-          {['About', 'Experience', 'Projects', 'Leadership', 'Skills', 'Awards', 'Contact'].map((item) => (
-            <li key={item}>
-              <button
-                onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
-                className="hover:text-neon-blue transition-colors"
-              >
-                {item}
-              </button>
-            </li>
+      {/* Ultra-minimal Top Nav */}
+      <motion.nav 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="fixed top-0 left-0 right-0 z-40 px-6 py-6 flex justify-between items-center pointer-events-none"
+      >
+        <div className="font-bold tracking-tight text-white pointer-events-auto">
+          M.V
+        </div>
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-text-secondary pointer-events-auto">
+          {['About', 'Experience', 'Work', 'Contact'].map((item) => (
+            <button
+              key={item}
+              onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
+              className="hover:text-white transition-colors"
+            >
+              {item}
+            </button>
           ))}
-        </ul>
-      </nav>
+        </div>
+      </motion.nav>
 
-      <div className="relative z-10">
+      {/* Main Content */}
+      <main className="relative z-10">
         <Hero />
         <About />
+        <Divider />
         <Experience />
+        <Education />
+        <Divider />
         <Projects />
-        <Leadership />
-        <Skills />
-        <Awards />
-        <Contact />
-      </div>
+        <Journey />
+        <ContentShowcase />
+        <SocialLinks />
+      </main>
 
-      <footer className="py-8 text-center text-gray-500 text-sm relative z-10 border-t border-white/5 bg-black/20 backdrop-blur-sm">
-        <p>© 2025 Mann Vaswani. All systems operational.</p>
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-border py-8 text-center bg-bg-dark">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
+          <p>© {new Date().getFullYear()} Mann Vaswani.</p>
+          <p className="mt-2 md:mt-0 font-mono text-xs">Built with React + Framer Motion</p>
+        </div>
       </footer>
-    </main>
+    </div>
   );
 }
 

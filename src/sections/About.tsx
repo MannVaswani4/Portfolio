@@ -1,56 +1,42 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { HolographicCard } from '../components/ui/HolographicCard';
-import { GraduationCap, School } from 'lucide-react';
+import { content } from '../data/content';
+import { SectionLabel } from '../components/ui/SectionLabel';
+import { ScrollReveal } from '../components/ui/ScrollReveal';
+import { Tag } from '../components/ui/Tag';
+import { RevealText } from '../components/ui/RevealText';
 
 export const About: React.FC = () => {
-    return (
-        <section id="about" className="py-20 relative">
-            <div className="container mx-auto px-6">
-                <motion.h2
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    className="mb-12 text-4xl font-bold text-white md:text-5xl"
-                >
-                    <span className="text-neon-blue">01.</span> Education
-                </motion.h2>
+  return (
+    <section id="about" className="py-24 relative container mx-auto px-6">
+      <SectionLabel>01. About</SectionLabel>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
+            Bridging design <br className="hidden md:block" /> and engineering.
+          </h2>
+          <div className="text-text-secondary text-lg leading-relaxed text-balance">
+            <RevealText text={content.about.bio} />
+          </div>
+        </div>
 
-                <div className="grid gap-8 md:grid-cols-2">
-                    <HolographicCard className="p-8">
-                        <div className="flex items-start gap-4">
-                            <div className="rounded-full bg-neon-blue/20 p-3 text-neon-blue">
-                                <GraduationCap size={32} />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-white">Newton School of Technology</h3>
-                                <p className="text-neon-blue">B.Tech – Computer Science & AI</p>
-                                <p className="text-sm text-gray-400">Aug 2023 – May 2027 | Sonipat, India</p>
-                                <div className="mt-4 inline-block rounded border border-neon-blue/30 bg-neon-blue/10 px-3 py-1 text-sm text-neon-blue">
-                                    GPA: 9.06/10
-                                </div>
-                                <p className="mt-4 text-gray-300">
-                                    Relevant Coursework: Probability and Statistics, Fundamentals of Programming, OOP, DSA, Advanced Programming.
-                                </p>
-                            </div>
-                        </div>
-                    </HolographicCard>
-
-                    <HolographicCard className="p-8">
-                        <div className="flex items-start gap-4">
-                            <div className="rounded-full bg-neon-purple/20 p-3 text-neon-purple">
-                                <School size={32} />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-white">Scholars’ Den School</h3>
-                                <p className="text-neon-purple">High School – Maths and Science</p>
-                                <div className="mt-4 inline-block rounded border border-neon-purple/30 bg-neon-purple/10 px-3 py-1 text-sm text-neon-purple">
-                                    Grade: 87.6%
-                                </div>
-                            </div>
-                        </div>
-                    </HolographicCard>
+        <div className="flex flex-col gap-10">
+          {Object.entries(content.about.skills).map(([category, items], idx) => (
+            <div key={category}>
+              <ScrollReveal delay={idx * 0.1}>
+                <h3 className="text-sm font-mono text-text-muted mb-4 uppercase tracking-wider">{category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((skill, skillIdx) => (
+                    <ScrollReveal key={skill} delay={idx * 0.1 + skillIdx * 0.05} width="w-auto">
+                      <Tag>{skill}</Tag>
+                    </ScrollReveal>
+                  ))}
                 </div>
+              </ScrollReveal>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
