@@ -16,9 +16,12 @@ export default {
                     overlay: '#1a1a1a',
                 },
                 accent: {
-                    DEFAULT: '#3b82f6',
-                    dim: 'rgba(59, 130, 246, 0.15)',
-                    glow: 'rgba(59, 130, 246, 0.4)',
+                    DEFAULT: '#EAB308',
+                    dim: 'rgba(234, 179, 8, 0.15)',
+                    glow: 'rgba(234, 179, 8, 0.4)',
+                },
+                yellow: {
+                    hero: '#EAB308',
                 },
                 border: {
                     DEFAULT: 'rgba(255, 255, 255, 0.08)',
@@ -34,6 +37,7 @@ export default {
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
                 mono: ['"Geist Mono"', '"JetBrains Mono"', 'monospace'],
+                display: ['"Bebas Neue"', 'sans-serif'],
             },
             animation: {
                 'fade-up': 'fadeUp 0.6s ease-out forwards',

@@ -1,98 +1,240 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+} from 'framer-motion';
 import { content } from '../data/content';
-import { Button } from '../components/ui/Button';
-import { RevealText } from '../components/ui/RevealText';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Instagram } from 'lucide-react';
 
+/* ─── helpers ───────────────────────────────────────────────── */
+const NavLink = ({ label, onClick }: { label: string; onClick?: () => void }) => (
+  <button
+    onClick={onClick}
+    className="text-[10px] font-bold tracking-[0.25em] text-white/40 uppercase
+               transition-colors hover:text-white"
+  >
+    {label}
+  </button>
+);
+
+const SocialIcon = ({
+  href,
+  icon: Icon,
+}: {
+  href: string;
+  icon: React.FC<{ size?: number; strokeWidth?: number }>;
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-white/30 hover:text-white/70 transition-colors"
+  >
+    <Icon size={16} strokeWidth={1.5} />
+  </a>
+);
+
+/* ─── Hero ──────────────────────────────────────────────────── */
 export const Hero: React.FC = () => {
-  const [taglineIndex, setTaglineIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  /*
+   * section is 220vh so scrollYProgress goes 0→1 over a 120vh scroll window.
+   * The sticky panel pins to top: 0, filling the viewport the whole time.
+   */
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const sp = useSpring(scrollYProgress, { stiffness: 55, damping: 16, restDelta: 0.0005 });
+
+  /*
+   * Phase 1 (0 → 0.35): everything is fully visible
+   * Phase 2 (0.35 → 0.72): nav + headline + left text fade out, image fades
+   * Phase 3 (0.35 → 1.0 ): circle scales up to fill entire screen
+   */
+
+  // Everything except the circle fades away
+  const uiOpacity  = useTransform(sp, [0, 0.25, 0.55], [1, 1, 0]);
+
+  // Image rises and fades
+  const imgY       = useTransform(sp, [0, 1], [0, -180]);
+  const imgOpacity = useTransform(sp, [0.1, 0.5], [1, 0]);
+
+  // Circle: scales up to fill the screen
+  const circleScale   = useTransform(sp, [0.1, 1.0], [1, 15]);
   
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTaglineIndex((prev) => (prev + 1) % content.hero.taglines.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  // Circle translates down significantly
+  const circleY       = useTransform(sp, [0, 0.5], [0, 200]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Ambient center radial gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
-      
-      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-        
-        {/* Placeholder Profile Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="w-24 h-24 mb-8 rounded-full border border-border bg-surface-elevated/50 backdrop-blur object-cover shadow-2xl relative"
-        >
-          {/* Subtle orb inside to simulate avatar */}
-          <div className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-gradient-to-tr from-accent to-purple-500 opacity-80 blur-md" />
-        </motion.div>
+    <section
+      ref={sectionRef}
+      className="relative w-full"
+      style={{ height: '220vh' }}
+    >
+      {/* ── STICKY VIEWPORT PANEL ─────────────────────────────── */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#080808] flex flex-col">
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+        {/* ── NAV ──────────────────────────────────────────────── */}
+        <motion.header
+          style={{ opacity: uiOpacity }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 text-white"
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="relative z-30 shrink-0 flex w-full items-center justify-between
+                     px-10 md:px-16 pt-9"
         >
-          {content.hero.name}
-        </motion.h1>
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-8 overflow-hidden rounded-full border border-white/10 shrink-0">
+              <img
+                src="/PotraitMann.png"
+                alt="MV"
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+            <span className="text-[11px] font-semibold tracking-[0.22em] text-white/50 uppercase">
+              mann v.
+            </span>
+          </div>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
-          className="h-8 mb-8 text-xl md:text-2xl font-mono text-accent"
-        >
-          <motion.span
-            key={taglineIndex}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
+          <nav className="hidden md:flex items-center gap-10">
+            {['About', 'Experience', 'Work', 'Contact'].map((item) => (
+              <NavLink
+                key={item}
+                label={item}
+                onClick={() =>
+                  document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+                }
+              />
+            ))}
+          </nav>
+        </motion.header>
+
+        {/* ── CANVAS ───────────────────────────────────────────── */}
+        <div className="relative flex-1 w-full">
+
+          {/* 1. LEFT TEXT */}
+          <motion.div
+            style={{ opacity: uiOpacity }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.6, ease: 'easeOut' }}
+            className="absolute left-10 md:left-16 top-1/2 -translate-y-1/2 z-20
+                       flex flex-col gap-5 max-w-[190px]"
           >
-            {content.hero.taglines[taglineIndex]}
-          </motion.span>
-        </motion.div>
+            <p className="text-[13px] leading-[1.8] text-white/45 font-light">
+              {content.hero.description}
+            </p>
+            <button
+              onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+              className="self-start text-[10px] font-bold tracking-[0.2em] text-white/50
+                         uppercase border-b border-white/20 pb-0.5
+                         hover:text-white hover:border-white/50 transition-colors"
+            >
+              View Work
+            </button>
+          </motion.div>
 
-        <div className="max-w-2xl text-lg text-text-secondary text-balance mb-12">
-          <RevealText text={content.hero.description} />
+          {/* 2. CIRCLE + PORTRAIT — both centered */}
+          {/*
+           * Centering strategy:
+           *   outer div: absolute inset-0, flex items-center justify-center
+           *   circle wrapper: relative, sized, centered inside outer
+           *   circle motion.div: absolute fill, scale origin-center
+           *   portrait: absolute bottom of the flex container, centered
+           */}
+          <div className="absolute inset-0 flex items-center justify-center">
+
+            {/* Circle centering wrapper — this div is the origin of the scale */}
+            <div className="relative flex items-center justify-center">
+              <motion.div
+                style={{ scale: circleScale, y: circleY }}
+                initial={{ scale: 0.55, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.1, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="w-[42vmin] h-[42vmin] rounded-full bg-[#EAB308]"
+              />
+            </div>
+          </div>
+
+          {/* Portrait — sits above the circle, pinned to bottom-center */}
+          <div className="absolute inset-0 flex items-end justify-center pb-0 pointer-events-none">
+            <motion.div
+              style={{ y: imgY, opacity: imgOpacity }}
+              initial={{ opacity: 0, y: 70 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.3, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10"
+            >
+              <img
+                src="/Bgremove.png"
+                alt="Mann Vaswani"
+                className="h-[100vh] max-h-[1000px] w-auto object-contain object-bottom select-none"
+                draggable={false}
+              />
+            </motion.div>
+          </div>
+
+          {/* 3. RIGHT HEADLINE */}
+          <motion.div
+            style={{ opacity: uiOpacity }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
+            className="absolute right-10 md:right-16 top-1/2 -translate-y-1/2 z-20
+                       flex flex-col items-end text-right"
+          >
+            <h1
+              className="font-display leading-[0.85] text-white select-none"
+              style={{ fontSize: 'clamp(4rem, 10vw, 8.5rem)' }}
+            >
+              {content.hero.name.split(' ')[0]}
+              <br />
+              <span style={{ color: '#EAB308' }}>
+                {content.hero.name.split(' ')[1]}
+              </span>
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.1 }}
+              className="mt-4 text-[10px] font-mono tracking-[0.25em] text-white/30 uppercase"
+            >
+              {content.hero.taglines[0]}
+            </motion.p>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex gap-4"
+        {/* ── FOOTER ───────────────────────────────────────────── */}
+        <motion.footer
+          style={{ opacity: uiOpacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+          className="relative z-30 shrink-0 flex w-full items-center justify-between
+                     px-10 md:px-16 pb-8"
         >
-          <Button onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}>
-            View Work
-          </Button>
-          <Button variant="ghost" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-            Contact
-          </Button>
-        </motion.div>
+          <div className="flex items-center gap-5">
+            <SocialIcon href="https://github.com/mannvaswani" icon={Github} />
+            <SocialIcon href="https://linkedin.com/in/mannvaswani" icon={Linkedin} />
+            <SocialIcon href="https://instagram.com/mannvaswani" icon={Instagram} />
+          </div>
+          <div className="flex items-center gap-3 text-[10px] tracking-[0.2em] text-white/25 uppercase">
+            <span>Sonipat, India</span>
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ArrowDown size={12} strokeWidth={1.5} />
+            </motion.div>
+          </div>
+        </motion.footer>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="w-px h-12 bg-gradient-to-b from-border to-transparent" />
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-text-muted"
-        >
-          <ArrowDown size={16} />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

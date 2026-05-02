@@ -32,28 +32,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      {/* Ultra-minimal Top Nav */}
-      <motion.nav 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-40 px-6 py-6 flex justify-between items-center pointer-events-none"
-      >
-        <div className="font-bold tracking-tight text-white pointer-events-auto">
-          M.V
-        </div>
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-text-secondary pointer-events-auto">
-          {['About', 'Experience', 'Work', 'Contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
-              className="hover:text-white transition-colors"
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      </motion.nav>
+
 
       {/* Main Content */}
       <main className="relative z-10">
