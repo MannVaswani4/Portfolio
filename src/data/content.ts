@@ -1,7 +1,7 @@
 export const content = {
   hero: {
     name: "MANN VASWANI",
-    taglines: ["Full Stack Developer", "AI Engineer", "Builder of things"],
+    taglines: ["AI Enthusiast", "AI Engineer", "Builder of things"],
     description: "Futuristic Developer & AI Enthusiast. Building next-gen interfaces and intelligent systems."
   },
   

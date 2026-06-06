@@ -1,0 +1,363 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 1. Fullscreen Blurred Entrance Overlay */
+.enterOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: #080808;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.enterOverlayHidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.enterTitle {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.45em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.enterBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 99px;
+  color: #ffffff;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.enterBtn:hover {
+  background: #ffffff;
+  color: #080808;
+  border-color: #ffffff;
+  transform: scale(1.04);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.12);
+}
+
+/* 2. Fullscreen Video Layer */
+.fullscreenVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.92; /* Bright, high-quality video */
+  transition: opacity 1s ease-in-out;
+}
+
+/* 3. Lightened Cinematic Overlays to Reduce Darkness */
+.vignetteOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 60%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+.topOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(8, 8, 8, 0.5) 0%, rgba(8, 8, 8, 0) 100%);
+}
+
+.bottomOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0) 100%);
+}
+
+/* 4. Screen Layout Container (Desktop Asymmetrical Sides) */
+.contentWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  z-index: 10;
+}
+
+/* Left side elements placement */
+.textLeft {
+  position: absolute;
+  left: 5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 340px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.tagline {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 300;
+  text-wrap: balance;
+  margin-bottom: 1.5rem;
+}
+
+.viewWorkBtn {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.viewWorkBtn:hover {
+  color: #ffffff;
+  border-bottom-color: #eab308;
+}
+
+/* Right side stacked headline placement */
+.textRight {
+  position: absolute;
+  right: 5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.nameStacked {
+  font-family: var(--font-display, 'Bebas Neue', sans-serif);
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.accentText {
+  color: #eab308;
+  background: linear-gradient(135deg, #f59e0b 0%, #eab308 50%, #fef08a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+}
+
+/* 5. Controls Overlay at the bottom right/center */
+.controlsPanel {
+  display: flex;
+  gap: 0.75rem;
+  position: absolute;
+  bottom: 2rem;
+  right: 5rem;
+  z-index: 15;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+  color: #eab308;
+}
+
+/* 6. Bottom Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.scrollIndicator:hover {
+  color: #eab308;
+  transform: translateX(-50%) translateY(3px);
+}
+
+.scrollLabel {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.scrollLineWrapper {
+  width: 1px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 99px;
+}
+
+.scrollPulseLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(234, 179, 8, 0), #eab308 50%, rgba(234, 179, 8, 0));
+  animation: pulseScrollLine 2s infinite cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* 7. Responsive Handling */
+@media (max-width: 991px) {
+  .textLeft {
+    left: 2.5rem;
+    max-width: 280px;
+  }
+  .textRight {
+    right: 2.5rem;
+  }
+  .controlsPanel {
+    right: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align elements vertically to the bottom */
+    align-items: flex-start; /* Shift everything to the left */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .textLeft {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    max-width: 100%; /* Increase description width */
+    width: 100%;
+    text-align: left; /* Shift text to the left */
+    align-items: flex-start;
+    margin-bottom: 0px;
+    order: 2;
+  }
+
+  .subtitle {
+    margin-bottom: 0px;
+  }
+
+  .viewWorkBtn {
+    display: none; /* Hide View Selected Work button on mobile */
+  }
+
+  .textRight {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    text-align: left; /* Shift name to the left */
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    order: 1;
+  }
+
+  .controlsPanel {
+    display: none; /* Hide controls (play, pause, audio) on mobile */
+  }
+
+  .scrollIndicator {
+    display: none; /* Hide Scroll to Explore button on mobile */
+  }
+}
+
+@keyframes pulseScrollLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  80%, 100% {
+    transform: translateY(250%);
+  }
+}

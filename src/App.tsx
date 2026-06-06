@@ -12,10 +12,18 @@ import { ContentShowcase } from './sections/ContentShowcase';
 import { SocialLinks } from './sections/SocialLinks';
 import { Divider } from './components/ui/Divider';
 
+import { StickyNavbar } from './components/Navigation/StickyNavbar';
+
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Force scroll to top and disable browser scroll restoration on reload
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     // Small delay to ensure smooth entrance
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
@@ -23,6 +31,7 @@ function App() {
 
   return (
     <div className="bg-bg-dark min-h-screen text-text-primary selection:bg-accent/30 selection:text-accent font-sans">
+      <StickyNavbar />
       <AnimatePresence>
         {!isLoaded && (
           <motion.div 
