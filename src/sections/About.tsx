@@ -1,18 +1,11 @@
 import React from 'react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
-import { RevealText } from '../components/ui/RevealText';
-import { Palette, Code, FileText } from 'lucide-react';
+import { Palette, Code, Instagram, Linkedin, Github } from 'lucide-react';
 import { ThreeDMarquee } from '../components/ui/3d-marquee';
-
-
+import { CountUp } from '../components/ui/CountUp';
+import { Card } from '../components/ui/card';
 
 export const About: React.FC = () => {
-  const handleScrollToProjects = () => {
-    const projSection = document.getElementById('work');
-    if (projSection) {
-      projSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="about" className="py-24 relative bg-background text-on-surface overflow-hidden">
@@ -30,67 +23,126 @@ export const About: React.FC = () => {
       <div className="container mx-auto px-6 max-w-[1440px] space-y-20">
         
         {/* 1. Hero / Profile Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Bio text (Left Side) */}
-          <div className="lg:col-span-7 space-y-6">
-            <ScrollReveal delay={0.1}>
-              <div className="inline-flex items-center gap-2 bg-primary-container/10 border border-primary-container/20 px-3 py-1 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#00f0ff]"></span>
-                <span className="font-mono text-[10px] text-primary-container uppercase tracking-widest font-semibold">
-                  AI Enthusiast & Developer
-                </span>
-              </div>
-            </ScrollReveal>
 
-            <ScrollReveal delay={0.2}>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                Bridging design and <br />
-                <span className="text-primary-container glow-cyan-text" style={{ textShadow: '0 0 15px rgba(0, 240, 255, 0.3)' }}>
-                  Engineering.
-                </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Bio text (Left Side) - shifted inwards towards center */}
+          <div className="lg:col-span-6 lg:col-start-3 space-y-8">
+            <ScrollReveal delay={0.1}>
+              <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight text-on-surface">
+                About Me
               </h2>
             </ScrollReveal>
 
+            <ScrollReveal delay={0.2}>
+              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-on-surface leading-relaxed max-w-2xl font-semibold">
+                Hi, I'm Mann — a full stack web developer and AI practitioner designing and building intelligent digital systems
+              </p>
+            </ScrollReveal>
+
+            {/* Stats Section */}
             <ScrollReveal delay={0.3}>
-              <div className="font-sans text-base md:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                <RevealText text="I am Mann Vaswani, a developer passionate about building seamless digital experiences. My focus lies in creating efficient, scalable applications by merging robust backend logic with intuitive, polished frontend design." />
+              <div className="grid grid-cols-3 gap-6 py-8 border-y border-outline-variant/15 my-6">
+                {/* Years of Experience */}
+                <div className="space-y-2">
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
+                    <CountUp from={0} to={2} duration={1} />
+                  </div>
+                  <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
+                    Years of Experience
+                  </p>
+                </div>
+
+                {/* Users Impacted */}
+                <div className="space-y-2 relative">
+                  {/* Floating Lime Dot */}
+                  <div className="absolute top-[-6px] left-[35px] w-2 h-2 rounded-full bg-[#a8ff35] shadow-[0_0_8px_#a8ff35]"></div>
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
+                    <CountUp from={0} to={55} duration={1.5} />
+                    <span className="text-2xl md:text-3xl lg:text-4xl font-bold ml-0.5">k+</span>
+                  </div>
+                  <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
+                    Users Impacted
+                  </p>
+                </div>
+
+                {/* Roles across products */}
+                <div className="space-y-2">
+                  <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
+                    <CountUp from={0} to={3} duration={1} />
+                    <span className="text-2xl md:text-3xl lg:text-4xl font-bold ml-0.5">+</span>
+                  </div>
+                  <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
+                    Roles across products
+                  </p>
+                </div>
               </div>
             </ScrollReveal>
 
+            {/* Contact Details */}
             <ScrollReveal delay={0.4}>
-              <div className="flex flex-wrap gap-4 pt-4">
-                <button
-                  onClick={handleScrollToProjects}
-                  className="px-8 py-3 bg-primary-container text-on-primary font-mono text-xs font-bold uppercase tracking-wider rounded hover:opacity-90 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-6">
+                <div className="space-y-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-on-surface-variant">Call Today :</span>
+                  <p className="text-base sm:text-lg font-sans text-on-surface font-semibold">+91 6265807090</p>
+                </div>
+                <div className="space-y-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-on-surface-variant">Email :</span>
+                  <p className="text-base sm:text-lg font-sans text-on-surface font-semibold">mannvaswani4@gmail.com</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Social Icons & My Story Button */}
+            <ScrollReveal delay={0.5}>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-outline-variant/10">
+                {/* Social Icons */}
+                <div className="flex items-center gap-6">
+                  <a href="https://x.com/mannvaswani" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                    <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                  <a href="https://instagram.com/mannvaswani_" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                    <Instagram size={24} />
+                  </a>
+                  <a href="https://linkedin.com/in/mannvaswani" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                    <Linkedin size={24} />
+                  </a>
+                  <a href="https://github.com/mannvaswani" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                    <Github size={24} />
+                  </a>
+                </div>
+
+                {/* My Story Button */}
+                <button 
+                  onClick={() => {
+                    const journeySec = document.getElementById('experience');
+                    if (journeySec) {
+                      journeySec.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="px-10 py-3 border border-[#a8ff35] text-[#a8ff35] font-display text-sm font-bold uppercase tracking-widest rounded-full hover:bg-[#a8ff35]/15 active:scale-95 transition-all"
                 >
-                  View Projects
+                  My Story
                 </button>
-                <a
-                  href="#/resume.pdf"
-                  download
-                  className="flex items-center gap-2 px-8 py-3 border border-primary-container/50 text-primary-container font-mono text-xs font-bold uppercase tracking-wider rounded hover:bg-primary-container/10 active:scale-95 transition-all"
-                >
-                  <FileText size={14} /> Download Resume
-                </a>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Profile Image card (Right Side) */}
-          <div className="lg:col-span-5 relative group flex justify-center">
-            {/* Ambient Background Glow */}
-            <div className="absolute -inset-4 bg-primary-container/20 blur-3xl rounded-full profile-bg-glow pointer-events-none"></div>
+          {/* Profile Image card (Right Side) - shifted inwards */}
+          <div className="lg:col-span-4 lg:col-start-9 relative group flex justify-center">
+            {/* Warm Ambient Background Glow */}
+            <div className="absolute -inset-4 bg-[#f97316]/10 blur-3xl rounded-full pointer-events-none"></div>
             
             <ScrollReveal delay={0.2} width="w-full" className="max-w-[400px]">
-              <div className="relative glass-card aspect-square rounded-xl overflow-hidden border border-outline-variant/30 group">
+              <Card className="relative aspect-[3/4] w-full rounded-[2rem] overflow-hidden border border-outline-variant/20 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-700 shadow-[0_12px_40px_rgba(249,115,22,0.25)] p-0">
                 <img
-                  src="/Bgremove.png"
+                  src="/MannAnimated.png"
                   alt="Mann Vaswani"
-                  className="w-full h-full object-cover grayscale contrast-110 brightness-90 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   draggable={false}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
-              </div>
+              </Card>
             </ScrollReveal>
           </div>
         </div>
@@ -105,7 +157,15 @@ export const About: React.FC = () => {
             <span className="font-mono text-xs text-primary-container/50 tracking-wider">V.2.0.48</span>
           </div>
 
-          <div className="mx-auto my-10 w-full rounded-3xl bg-surface-lowest border border-outline-variant/20 p-2 backdrop-blur-sm shadow-[0_0_50px_rgba(0,240,255,0.05)]">
+          <div className="mx-auto my-10 w-full relative overflow-hidden">
+            {/* Blurry fade-out overlays at top and bottom */}
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#131313] via-[#131313]/50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#131313] via-[#131313]/50 to-transparent z-10 pointer-events-none" />
+            
+            {/* Blurry fade-out overlays at left and right */}
+            <div className="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-[#131313] via-[#131313]/50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 right-0 h-full w-32 bg-gradient-to-l from-[#131313] via-[#131313]/50 to-transparent z-10 pointer-events-none" />
+
             <ThreeDMarquee />
           </div>
         </div>

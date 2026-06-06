@@ -54,9 +54,9 @@ export default {
                 }
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
+                sans: ['"Bebas Neue"', 'Inter', 'system-ui', 'sans-serif'],
                 mono: ['"JetBrains Mono"', 'monospace'],
-                display: ['Sora', 'sans-serif'],
+                display: ['"Bebas Neue"', 'Inter', 'sans-serif'],
             },
             borderRadius: {
                 DEFAULT: '0.125rem',
