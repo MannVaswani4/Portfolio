@@ -1,125 +1,160 @@
 import React from 'react';
-import { content } from '../data/content';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { RevealText } from '../components/ui/RevealText';
-import { Github, Linkedin, Instagram, Mail, FileText } from 'lucide-react';
+import { Palette, Code, FileText } from 'lucide-react';
+import { ThreeDMarquee } from '../components/ui/3d-marquee';
+
+
 
 export const About: React.FC = () => {
+  const handleScrollToProjects = () => {
+    const projSection = document.getElementById('work');
+    if (projSection) {
+      projSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="about" className="py-28 relative bg-[#EAB308] overflow-hidden text-black">
-      {/* Floating Portrait keyframe styles */}
+    <section id="about" className="py-24 relative bg-background text-on-surface overflow-hidden">
+      {/* Floating Portrait & Glow keyframe styles */}
       <style dangerouslySetInnerHTML={{__html: `
-        @keyframes aboutFloat {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-12px) rotate(1deg); }
+        @keyframes profileGlow {
+          0%, 100% { opacity: 0.15; transform: scale(0.95); }
+          50% { opacity: 0.35; transform: scale(1.05); }
         }
-        .about-portrait-float {
-          animation: aboutFloat 6s ease-in-out infinite;
+        .profile-bg-glow {
+          animation: profileGlow 8s ease-in-out infinite;
         }
       `}} />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* Left Side: Animated Portrait Image */}
-          <div className="lg:col-span-5 flex justify-center items-center order-2 lg:order-1">
-            <div className="relative w-full max-w-[380px] md:max-w-[420px]">
-              {/* Soft decorative shadow circle */}
-              <div className="absolute inset-0 bg-black/5 rounded-full filter blur-3xl pointer-events-none transform -translate-y-6 scale-90" />
-              
-              <img
-                src="/Bgremove.png"
-                alt="Mann Vaswani"
-                className="about-portrait-float w-full h-auto object-contain select-none filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
-                draggable={false}
-              />
-            </div>
-          </div>
+      <div className="container mx-auto px-6 max-w-[1440px] space-y-20">
+        
+        {/* 1. Hero / Profile Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Bio text (Left Side) */}
+          <div className="lg:col-span-7 space-y-6">
+            <ScrollReveal delay={0.1}>
+              <div className="inline-flex items-center gap-2 bg-primary-container/10 border border-primary-container/20 px-3 py-1 rounded-full">
+                <span className="w-2 h-2 rounded-full bg-primary-container animate-pulse shadow-[0_0_8px_#00f0ff]"></span>
+                <span className="font-mono text-[10px] text-primary-container uppercase tracking-widest font-semibold">
+                  AI Enthusiast & Developer
+                </span>
+              </div>
+            </ScrollReveal>
 
-          {/* Right Side: Bio details, Links, Resume */}
-          <div className="lg:col-span-7 flex flex-col order-1 lg:order-2">
-            <div className="mb-6">
-              <span className="text-xs font-mono text-black/50 uppercase tracking-widest font-semibold">01. About Me</span>
-            </div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black tracking-tight leading-tight">
-              Bridging design <br className="hidden md:block" /> and engineering.
-            </h2>
+            <ScrollReveal delay={0.2}>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                Bridging design and <br />
+                <span className="text-primary-container glow-cyan-text" style={{ textShadow: '0 0 15px rgba(0, 240, 255, 0.3)' }}>
+                  Engineering.
+                </span>
+              </h2>
+            </ScrollReveal>
 
-            <div className="text-black/75 text-lg leading-relaxed mb-8 max-w-xl">
-              <RevealText text={content.about.bio} />
-            </div>
+            <ScrollReveal delay={0.3}>
+              <div className="font-sans text-base md:text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                <RevealText text="I am Mann Vaswani, a developer passionate about building seamless digital experiences. My focus lies in creating efficient, scalable applications by merging robust backend logic with intuitive, polished frontend design." />
+              </div>
+            </ScrollReveal>
 
-            {/* Skills grid section */}
-            <div className="flex flex-col gap-6 mb-8 border-t border-black/10 pt-8">
-              {Object.entries(content.about.skills).map(([category, items], idx) => (
-                <div key={category}>
-                  <ScrollReveal delay={idx * 0.1}>
-                    <h3 className="text-[10px] font-mono text-black/60 mb-3 uppercase tracking-widest font-bold">{category}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {items.map((skill, skillIdx) => (
-                        <ScrollReveal key={skill} delay={idx * 0.1 + skillIdx * 0.05} width="w-auto">
-                          <span className="px-3 py-1 text-xs font-semibold tracking-wide border border-black/20 rounded-full text-black/80 bg-black/5 hover:bg-black/10 transition-colors duration-200">
-                            {skill}
-                          </span>
-                        </ScrollReveal>
-                      ))}
-                    </div>
-                  </ScrollReveal>
-                </div>
-              ))}
-            </div>
-
-            {/* Links and Resume Button Wrapper */}
             <ScrollReveal delay={0.4}>
-              <div className="flex flex-wrap items-center gap-4 border-t border-black/10 pt-8">
-                <a
-                  href="https://github.com/mannvaswani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-black/5 border border-black/10 hover:bg-black/10 hover:border-black/30 rounded-full transition-all duration-300 text-black/75 hover:text-black hover:scale-110"
-                  title="GitHub Profile"
+              <div className="flex flex-wrap gap-4 pt-4">
+                <button
+                  onClick={handleScrollToProjects}
+                  className="px-8 py-3 bg-primary-container text-on-primary font-mono text-xs font-bold uppercase tracking-wider rounded hover:opacity-90 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,240,255,0.2)]"
                 >
-                  <Github size={20} strokeWidth={1.5} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/mannvaswani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-black/5 border border-black/10 hover:bg-black/10 hover:border-black/30 rounded-full transition-all duration-300 text-black/75 hover:text-black hover:scale-110"
-                  title="LinkedIn Profile"
-                >
-                  <Linkedin size={20} strokeWidth={1.5} />
-                </a>
-                <a
-                  href="https://instagram.com/mannvaswani"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-black/5 border border-black/10 hover:bg-black/10 hover:border-black/30 rounded-full transition-all duration-300 text-black/75 hover:text-black hover:scale-110"
-                  title="Instagram Profile"
-                >
-                  <Instagram size={20} strokeWidth={1.5} />
-                </a>
-                <a
-                  href="mailto:contact@mannvaswani.com"
-                  className="p-3 bg-black/5 border border-black/10 hover:bg-black/10 hover:border-black/30 rounded-full transition-all duration-300 text-black/75 hover:text-black hover:scale-110"
-                  title="Email Me"
-                >
-                  <Mail size={20} strokeWidth={1.5} />
-                </a>
-                
+                  View Projects
+                </button>
                 <a
                   href="#/resume.pdf"
                   download
-                  className="flex items-center gap-2 px-6 py-3 bg-black hover:bg-black/85 text-white font-semibold text-xs tracking-wider uppercase rounded-full transition-all duration-300 hover:scale-105 shadow-md shadow-black/15 ml-0 sm:ml-4"
+                  className="flex items-center gap-2 px-8 py-3 border border-primary-container/50 text-primary-container font-mono text-xs font-bold uppercase tracking-wider rounded hover:bg-primary-container/10 active:scale-95 transition-all"
                 >
                   <FileText size={14} /> Download Resume
                 </a>
               </div>
             </ScrollReveal>
+          </div>
 
+          {/* Profile Image card (Right Side) */}
+          <div className="lg:col-span-5 relative group flex justify-center">
+            {/* Ambient Background Glow */}
+            <div className="absolute -inset-4 bg-primary-container/20 blur-3xl rounded-full profile-bg-glow pointer-events-none"></div>
+            
+            <ScrollReveal delay={0.2} width="w-full" className="max-w-[400px]">
+              <div className="relative glass-card aspect-square rounded-xl overflow-hidden border border-outline-variant/30 group">
+                <img
+                  src="/Bgremove.png"
+                  alt="Mann Vaswani"
+                  className="w-full h-full object-cover grayscale contrast-110 brightness-90 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
+
+        {/* 2. Tech Stack Section */}
+        <div className="space-y-6 pt-10">
+          <div className="flex items-end justify-between border-b border-outline-variant/10 pb-4">
+            <div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-on-surface">Core Stack</h3>
+              <p className="font-sans text-sm text-on-surface-variant">The technologies I master to build the web.</p>
+            </div>
+            <span className="font-mono text-xs text-primary-container/50 tracking-wider">V.2.0.48</span>
+          </div>
+
+          <div className="mx-auto my-10 w-full rounded-3xl bg-surface-lowest border border-outline-variant/20 p-2 backdrop-blur-sm shadow-[0_0_50px_rgba(0,240,255,0.05)]">
+            <ThreeDMarquee />
+          </div>
+        </div>
+
+        {/* 3. Philosophy Section (The Ethos) */}
+        <section className="relative py-16 px-8 overflow-hidden rounded-3xl border border-outline-variant/10">
+          {/* Subtle Grid backdrop */}
+          <div className="absolute inset-0 bg-surface-low/60 backdrop-blur-md -z-10"></div>
+          <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{
+            backgroundImage: 'linear-gradient(#dbfcff 1px, transparent 1px), linear-gradient(90deg, #dbfcff 1px, transparent 1px)',
+            backgroundSize: '100px 100px'
+          }}></div>
+
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <span className="font-mono text-xs text-secondary tracking-[0.3em] uppercase font-bold">The Ethos</span>
+            <h3 className="font-display text-3xl md:text-4xl font-extrabold text-on-surface">Precision in Every Pixel</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left pt-6">
+              {/* Pillar 1 */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Code className="text-primary-container" size={20} />
+                  <h4 className="font-display text-base font-bold text-on-surface">Clean Code, Complex Thinking</h4>
+                </div>
+                <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
+                  I believe in writing code that is not just functional but maintainable and elegant. Architecture is the foundation upon which great user experiences are built.
+                </p>
+              </div>
+
+              {/* Pillar 2 */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Palette className="text-secondary" size={20} />
+                  <h4 className="font-display text-base font-bold text-on-surface">User-Centric Design</h4>
+                </div>
+                <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
+                  Technology should be invisible. My design philosophy focuses on reducing friction and creating interfaces that feel like a natural extension of the user's intent.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-8 flex justify-center">
+              <blockquote className="italic font-sans text-on-surface text-lg border-l-4 border-primary-container pl-6 py-2 max-w-2xl text-left leading-relaxed">
+                "Great products aren't just built; they are crafted through a meticulous balance of logic, empathy, and technical excellence."
+              </blockquote>
+            </div>
+          </div>
+        </section>
+
       </div>
     </section>
   );

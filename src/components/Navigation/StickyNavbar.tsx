@@ -12,7 +12,6 @@ export const StickyNavbar: React.FC = () => {
         setIsVisible(true);
       } else {
         setIsVisible(false);
-        // Automatically close mobile menu if header hides
         setIsMobileMenuOpen(false);
       }
     };
@@ -27,7 +26,6 @@ export const StickyNavbar: React.FC = () => {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     } else {
-      // Restore scroll behavior only if Visible (so we don't accidentally release Hero lock)
       const heroHeight = window.innerHeight;
       if (window.scrollY > heroHeight * 0.8) {
         document.body.style.overflow = '';
@@ -47,7 +45,8 @@ export const StickyNavbar: React.FC = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-16 py-4 
-          bg-[#0a0a0a]/85 backdrop-blur-md border-b border-white/5 transition-all duration-500 ease-out
+          bg-surface/70 backdrop-blur-xl border-b border-outline-variant/20 shadow-[0_0_20px_rgba(0,240,255,0.1)] 
+          transition-all duration-500 ease-out
           ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'}`}
       >
         <div 
@@ -57,14 +56,14 @@ export const StickyNavbar: React.FC = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <div className="h-8 w-8 overflow-hidden rounded-full border border-white/10 shrink-0">
+          <div className="h-8 w-8 overflow-hidden rounded-full border border-outline-variant/30 shrink-0">
             <img
               src="/PotraitMann.png"
               alt="MV"
               className="h-full w-full object-cover object-top"
             />
           </div>
-          <span className="text-[11px] font-semibold tracking-[0.22em] text-white uppercase">
+          <span className="font-display text-[12px] font-bold tracking-[0.25em] text-primary uppercase">
             mann v.
           </span>
         </div>
@@ -75,7 +74,7 @@ export const StickyNavbar: React.FC = () => {
             <button
               key={item}
               onClick={() => scrollToSection(item.toLowerCase())}
-              className="text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase transition-colors hover:text-white"
+              className="font-mono text-[11px] font-medium tracking-[0.18em] text-on-surface-variant uppercase transition-colors hover:text-primary"
             >
               {item}
             </button>
@@ -85,7 +84,7 @@ export const StickyNavbar: React.FC = () => {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="flex md:hidden text-white/50 hover:text-white transition-colors z-50 p-2"
+          className="flex md:hidden text-primary/65 hover:text-primary transition-colors z-50 p-2"
           aria-label="Toggle Navigation Menu"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -94,7 +93,7 @@ export const StickyNavbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-[#0a0a0a]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-300
+        className={`fixed inset-0 z-40 bg-surface-dim/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden transition-all duration-300
           ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         {['About', 'Experience', 'Work', 'Contact'].map((item) => (
@@ -104,7 +103,7 @@ export const StickyNavbar: React.FC = () => {
               setIsMobileMenuOpen(false);
               scrollToSection(item.toLowerCase());
             }}
-            className="text-lg font-bold tracking-[0.25em] text-white/50 uppercase transition-all hover:text-white hover:scale-105"
+            className="font-display text-lg font-semibold tracking-[0.25em] text-on-surface-variant uppercase transition-all hover:text-primary hover:scale-105"
           >
             {item}
           </button>

@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Bebas+Neue&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg-dark: #0a0a0a;
+  --bg-dark: #131313;
 }
 
 html {
@@ -14,7 +12,9 @@ html {
 
 body {
   background-color: var(--bg-dark);
-  color: #ffffff;
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+  color: #e5e2e1;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,12 +32,59 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: rgba(30, 30, 30, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(132, 148, 149, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: #00f0ff;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Glow Shadows */
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+}
+
+.glow-violet {
+  box-shadow: 0 0 15px rgba(207, 92, 255, 0.35);
+}
+
+/* Animated scanline button */
+.scanline-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scanline-btn::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(219, 252, 255, 0.25), transparent);
+  transition: top 0.5s ease;
+  pointer-events: none;
+}
+
+.scanline-btn:hover::after {
+  top: 100%;
 }
 
 /* Utilities */
@@ -54,11 +101,10 @@ body {
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
-}
 
-/* Base structural fixes */
-html {
-  scroll-behavior: smooth;
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
 }
 
 #root {

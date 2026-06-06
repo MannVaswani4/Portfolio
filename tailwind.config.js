@@ -8,36 +8,70 @@ export default {
         extend: {
             colors: {
                 bg: {
-                    dark: '#0a0a0a',
+                    dark: '#131313',
                 },
                 surface: {
-                    DEFAULT: '#111111',
-                    elevated: '#161616',
-                    overlay: '#1a1a1a',
+                    DEFAULT: '#131313',
+                    dim: '#131313',
+                    bright: '#393939',
+                    lowest: '#0e0e0e',
+                    low: '#1c1b1b',
+                    container: '#201f1f',
+                    high: '#2a2a2a',
+                    highest: '#353534',
                 },
-                accent: {
-                    DEFAULT: '#EAB308',
-                    dim: 'rgba(234, 179, 8, 0.15)',
-                    glow: 'rgba(234, 179, 8, 0.4)',
+                primary: {
+                    DEFAULT: '#dbfcff',
+                    container: '#00f0ff',
                 },
-                yellow: {
-                    hero: '#EAB308',
+                secondary: {
+                    DEFAULT: '#ecb2ff',
+                    container: '#cf5cff',
+                },
+                outline: {
+                    DEFAULT: '#849495',
+                    variant: '#3b494b',
+                },
+                on: {
+                    surface: '#e5e2e1',
+                    'surface-variant': '#b9cacb',
                 },
                 border: {
-                    DEFAULT: 'rgba(255, 255, 255, 0.08)',
-                    hover: 'rgba(255, 255, 255, 0.15)',
-                    accent: 'rgba(59, 130, 246, 0.3)',
+                    DEFAULT: 'rgba(132, 148, 149, 0.15)',
+                    hover: 'rgba(132, 148, 149, 0.35)',
+                    accent: 'rgba(0, 240, 255, 0.3)',
                 },
                 text: {
-                    primary: '#ffffff',
-                    secondary: '#a1a1aa',
-                    muted: '#52525b',
+                    primary: '#e5e2e1',
+                    secondary: '#b9cacb',
+                    muted: '#849495',
                 },
+                accent: {
+                    DEFAULT: '#00f0ff',
+                    dim: 'rgba(0, 240, 255, 0.15)',
+                    glow: 'rgba(0, 240, 255, 0.4)',
+                    violet: '#cf5cff',
+                }
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
-                mono: ['"Geist Mono"', '"JetBrains Mono"', 'monospace'],
-                display: ['"Bebas Neue"', 'sans-serif'],
+                mono: ['"JetBrains Mono"', 'monospace'],
+                display: ['Sora', 'sans-serif'],
+            },
+            borderRadius: {
+                DEFAULT: '0.125rem',
+                lg: '0.25rem',
+                xl: '0.5rem',
+                full: '0.75rem',
+            },
+            spacing: {
+                'margin-mobile': '20px',
+                gutter: '24px',
+                'margin-desktop': '80px',
+                unit: '4px',
+                'stack-lg': '64px',
+                'stack-sm': '16px',
+                'stack-md': '32px',
             },
             animation: {
                 'fade-up': 'fadeUp 0.6s ease-out forwards',
