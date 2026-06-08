@@ -19,6 +19,7 @@ export const content = {
       company: "RealtyEaseAI",
       role: "Business Development Supervisor",
       period: "Mar 2022 – Apr 2023 (Khandwa) | Apr 2025 – Sep 2025 (Remote)",
+      summary: "Led client communications, onboarding, strategy and product feedback loops.",
       points: [
         "Youngest early employee; led business development, strategy, and outbound growth",
         "Built branding kit and online presence (1.8K Instagram + LinkedIn), generating 3+ inbound clients",
@@ -32,6 +33,7 @@ export const content = {
       company: "MoveInSync",
       role: "Frontend Web Developer",
       period: "June 2024 – Aug 2024 | Bangalore",
+      summary: "Built production UI used by enterprise customers in corporate mobility.",
       points: [
         "Built responsive enterprise web flows used by 50,000+ employees",
         "Developed reusable UI components; solved device-specific edge cases",
@@ -42,11 +44,24 @@ export const content = {
       company: "Rishihood University",
       role: "Full Stack Web Developer",
       period: "June 2024 – Aug 2024 | Sonipat",
+      summary: "Built the end-to-end student experience system used across campus.",
       points: [
         "Built Rishiverse, a Student ERP for 5,500+ users (1,200 active at launch)",
         "Digitized 80% of campus workflows",
         "Built and integrated 8+ modules including Attendance, Mess, Exit Pass, Profiles, Complaints",
         "Designed unified data flow with role-based access across departments"
+      ]
+    },
+    {
+      company: "Praxto Designs",
+      role: "UI UX Executive",
+      period: "Mar 2026 - May 2026 | Bengaluru, Karnataka, India (Remote)",
+      summary: "Designed high-converting user interfaces, conducted user research, and optimized wireframes for next-gen products.",
+      points: [
+        "Conducted comprehensive UX audits on client platforms, increasing user activation rates by up to 25%",
+        "Created high-fidelity wireframes, interactive prototypes, and modular UI component libraries using Figma",
+        "Collaborated directly with front-end engineering teams to ensure pixel-perfect design implementation",
+        "Developed and maintained design systems to streamline design-to-development workflows"
       ]
     }
   ],

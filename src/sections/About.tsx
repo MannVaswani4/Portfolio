@@ -4,6 +4,8 @@ import { Palette, Code, Instagram, Linkedin, Github } from 'lucide-react';
 import { ThreeDMarquee } from '../components/ui/3d-marquee';
 import { CountUp } from '../components/ui/CountUp';
 import { Card } from '../components/ui/card';
+import EducationAndCertifications from '../sections/EducationAndCertifications';
+import { Experience } from './Experience';
 
 export const About: React.FC = () => {
 
@@ -26,7 +28,7 @@ export const About: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Bio text (Left Side) - shifted inwards towards center */}
-          <div className="lg:col-span-6 lg:col-start-3 space-y-8">
+          <div className="lg:col-span-5 lg:col-start-2 space-y-8">
             <ScrollReveal delay={0.1}>
               <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase tracking-tight text-on-surface">
                 About Me
@@ -34,8 +36,8 @@ export const About: React.FC = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-on-surface leading-relaxed max-w-2xl font-semibold">
-                Hi, I'm Mann — a full stack web developer and AI practitioner designing and building intelligent digital systems
+              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-on-surface leading-relaxed max-w-2xl">
+                Hi, I'm Mann — a product‑minded builder, AI enthusiast, and Full‑Stack Developer who loves creating technology that solves real world problems
               </p>
             </ScrollReveal>
 
@@ -44,7 +46,7 @@ export const About: React.FC = () => {
               <div className="grid grid-cols-3 gap-6 py-8 border-y border-outline-variant/15 my-6">
                 {/* Years of Experience */}
                 <div className="space-y-2">
-                  <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
+                  <div className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
                     <CountUp from={0} to={2} duration={1} />
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
@@ -53,12 +55,10 @@ export const About: React.FC = () => {
                 </div>
 
                 {/* Users Impacted */}
-                <div className="space-y-2 relative">
-                  {/* Floating Lime Dot */}
-                  <div className="absolute top-[-6px] left-[35px] w-2 h-2 rounded-full bg-[#a8ff35] shadow-[0_0_8px_#a8ff35]"></div>
-                  <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
+                <div className="space-y-2">
+                  <div className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
                     <CountUp from={0} to={55} duration={1.5} />
-                    <span className="text-2xl md:text-3xl lg:text-4xl font-bold ml-0.5">k+</span>
+                    <span className="text-2xl md:text-3xl lg:text-4xl ml-0.5">k</span>
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
                     Users Impacted
@@ -67,9 +67,9 @@ export const About: React.FC = () => {
 
                 {/* Roles across products */}
                 <div className="space-y-2">
-                  <div className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
+                  <div className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
                     <CountUp from={0} to={3} duration={1} />
-                    <span className="text-2xl md:text-3xl lg:text-4xl font-bold ml-0.5">+</span>
+                    <span className="text-2xl md:text-3xl lg:text-4xl ml-0.5">+</span>
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
                     Roles across products
@@ -81,13 +81,13 @@ export const About: React.FC = () => {
             {/* Contact Details */}
             <ScrollReveal delay={0.4}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-6">
-                <div className="space-y-2">
-                  <span className="text-xs font-mono uppercase tracking-wider text-on-surface-variant">Call Today :</span>
-                  <p className="text-base sm:text-lg font-sans text-on-surface font-semibold">+91 6265807090</p>
+                <div className="flex flex-col items-start space-y-1">
+                  <a href="tel:+916265807090" className="text-xs font-mono uppercase tracking-wider text-on-surface-variant hover:text-[#a8ff35] transition-colors">Call Today</a>
+                  <a href="tel:+916265807090" className="text-base sm:text-lg font-sans text-on-surface hover:text-[#a8ff35] transition-colors">+91 6265807090</a>
                 </div>
-                <div className="space-y-2">
-                  <span className="text-xs font-mono uppercase tracking-wider text-on-surface-variant">Email :</span>
-                  <p className="text-base sm:text-lg font-sans text-on-surface font-semibold">mannvaswani4@gmail.com</p>
+                <div className="flex flex-col items-start space-y-1">
+                  <a href="mailto:mannvaswani4@gmail.com" className="text-xs font-mono uppercase tracking-wider text-on-surface-variant hover:text-[#a8ff35] transition-colors">Email</a>
+                  <a href="mailto:mannvaswani4@gmail.com" className="text-base sm:text-lg font-sans text-on-surface hover:text-[#a8ff35] transition-colors">mannvaswani4@gmail.com</a>
                 </div>
               </div>
             </ScrollReveal>
@@ -97,18 +97,13 @@ export const About: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-outline-variant/10">
                 {/* Social Icons */}
                 <div className="flex items-center gap-6">
-                  <a href="https://x.com/mannvaswani" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
-                    <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                  </a>
-                  <a href="https://instagram.com/mannvaswani_" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
-                    <Instagram size={24} />
-                  </a>
-                  <a href="https://linkedin.com/in/mannvaswani" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                  <a href="https://www.linkedin.com/in/mann-vaswani-953217291/" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
                     <Linkedin size={24} />
                   </a>
-                  <a href="https://github.com/mannvaswani" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                  <a href="https://www.instagram.com/mann_vaswani/?hl=en" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
+                    <Instagram size={24} />
+                  </a>
+                  <a href="https://github.com/MannVaswani4?tab=overview&from=2026-06-01&to=2026-06-07" target="_blank" rel="noreferrer" className="text-on-surface hover:text-[#a8ff35] transition-colors">
                     <Github size={24} />
                   </a>
                 </div>
@@ -130,11 +125,11 @@ export const About: React.FC = () => {
           </div>
 
           {/* Profile Image card (Right Side) - shifted inwards */}
-          <div className="lg:col-span-4 lg:col-start-9 relative group flex justify-center">
+          <div className="lg:col-span-4 lg:col-start-8 lg:col-end-12 relative group flex justify-center">
             {/* Warm Ambient Background Glow */}
             <div className="absolute -inset-4 bg-[#f97316]/10 blur-3xl rounded-full pointer-events-none"></div>
             
-            <ScrollReveal delay={0.2} width="w-full" className="max-w-[400px]">
+            <ScrollReveal delay={0.2} width="w-full" className="max-w-[440px]">
               <Card className="relative aspect-[3/4] w-full rounded-[2rem] overflow-hidden border border-outline-variant/20 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-700 shadow-[0_12px_40px_rgba(249,115,22,0.25)] p-0">
                 <img
                   src="/MannAnimated.png"
@@ -169,6 +164,9 @@ export const About: React.FC = () => {
             <ThreeDMarquee />
           </div>
         </div>
+
+        {/* Experience Section placed right after Core Stack */}
+        <Experience />
 
         {/* 3. Philosophy Section (The Ethos) */}
         <section className="relative py-16 px-8 overflow-hidden rounded-3xl border border-outline-variant/10">
@@ -214,6 +212,9 @@ export const About: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* Education & Certifications Section */}
+        <EducationAndCertifications />
 
       </div>
     </section>

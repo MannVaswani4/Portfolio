@@ -2,6 +2,7 @@ import React from 'react';
 import { content } from '../data/content';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { ExternalLink, FileText, Database, Activity, Eye, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const Projects: React.FC = () => {
   // Extract AgriSphere and Rishiverse from data
@@ -42,7 +43,13 @@ export const Projects: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
           {/* Card 1: AgriSphere (8 cols on desktop) */}
-          <article className="md:col-span-8 group relative overflow-hidden glass-card rounded-xl flex flex-col justify-between">
+          <motion.article
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-8 group relative overflow-hidden glass-card rounded-xl flex flex-col justify-between"
+          >
             <div className="h-[260px] md:h-[320px] overflow-hidden relative">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHXN7rU0Zi0Vk1isurk-9ciORVJAXgTrSvdDGgc0HrNfIgI6mli0ZTbE1PQxuyemJOOQIti6E_W83SlW7O9LyrBz_GHzG6E-voJe-lZ69TY4ceF_OueRbEXccdPKjuktX-Ko9opjI0se-Q4z4dM1xTfAVb3UWrOmMxxN5y2kGtaizeiWf7J2nhFeQtTHAfV0hJolqMl8uNp_2lamPusca_tuh4qCkaGlk7_TsHXdf7PVG2Hf__f8vT__lAW2MejSbPlVTmC0jebAXF"
@@ -85,10 +92,16 @@ export const Projects: React.FC = () => {
                 </button>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* Card 2: Rishiverse (4 cols on desktop) */}
-          <article className="md:col-span-4 group glass-card rounded-xl flex flex-col justify-between">
+          <motion.article
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-4 group glass-card rounded-xl flex flex-col justify-between"
+          >
             <div className="h-48 overflow-hidden relative">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFqznERDNeVt48DX-vQKjjoB9r0IcmnzpIUaWu7FutxSBnABzJ0ta9HBEcOl-cL0E9P-WXmde7Gs_jH6jBUN9Pw__Oh9Ss8JNLIoPTYs2sv4GNq38yhur_iTg1-NizOj4kWExLDVWskg2Uk4u4rqQh98tM495c3JQmBL_zqxaCqPcVYrFNMbi3t65WzWHkPsjHGBKRnXeAcEMkas9lntKcVxNgfp_0Qr4HzdMy69pthDuP0JBVsqLhnFFpSe7H0mgEFjnEAHD7oP0"
@@ -125,10 +138,16 @@ export const Projects: React.FC = () => {
                 </button>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* Card 3: VectorDB Optimizer (4 cols) */}
-          <article className="md:col-span-4 group glass-card rounded-xl p-6 flex flex-col justify-between min-h-[200px]">
+          <motion.article
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-4 group glass-card rounded-xl p-6 flex flex-col justify-between min-h-[200px]"
+          >
             <div>
               <div className="w-12 h-12 bg-primary-container/10 border border-primary-container/30 rounded-lg flex items-center justify-center mb-4 text-primary-container group-hover:glow-cyan transition-all">
                 <Database size={20} className="stroke-[1.5]" />
@@ -149,10 +168,16 @@ export const Projects: React.FC = () => {
                 Explore Code <ArrowRight size={12} />
               </button>
             </div>
-          </article>
+          </motion.article>
 
           {/* Card 4: Sentinel AI Monitor (4 cols) */}
-          <article className="md:col-span-4 group glass-card rounded-xl p-6 flex flex-col justify-between min-h-[200px]">
+          <motion.article
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-4 group glass-card rounded-xl p-6 flex flex-col justify-between min-h-[200px]"
+          >
             <div>
               <div className="w-12 h-12 bg-secondary/10 border border-secondary/30 rounded-lg flex items-center justify-center mb-4 text-secondary">
                 <Activity size={20} className="stroke-[1.5]" />
@@ -173,10 +198,16 @@ export const Projects: React.FC = () => {
                 Explore Code <ArrowRight size={12} />
               </button>
             </div>
-          </article>
+          </motion.article>
 
           {/* Card 5: Web3 Identity Engine (4 cols) */}
-          <article className="md:col-span-4 group glass-card rounded-xl overflow-hidden min-h-[220px] relative flex flex-col justify-end p-6">
+          <motion.article
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="md:col-span-4 group glass-card rounded-xl overflow-hidden min-h-[220px] relative flex flex-col justify-end p-6"
+          >
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOTiNuag99HnyV7RiXCfqMS3t5ygtz7zcruBfbZEhHSx2Q9eKw44y-2MntNt993DZdfSIQz1d5lpNXSfyztmnoqM__kX17xx3l7p-Z-7d4gNTFyhTDYUXkUKi6l0uFESHT9Cd6SLgi0eRq5AQT08fXTiDV5D1W4nlRjiQuK8LZsGMoWULbD5H5CZ0b3It7BsT_UrINUnzGUOzOueMc_0n0QmPEsXjjtjhbDilSfc18tfQ5ux9mmO8NBNroJcIQKNthmKGpcs6YjRV4"
               alt="Web3 Identity Engine"
@@ -198,7 +229,7 @@ export const Projects: React.FC = () => {
                 <Eye size={12} /> View Case Study
               </button>
             </div>
-          </article>
+          </motion.article>
 
         </div>
       </div>

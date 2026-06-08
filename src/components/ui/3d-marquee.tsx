@@ -23,7 +23,9 @@ const defaultTechItems: TechItem[] = [
   { name: 'HTML5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', invert: false },
   { name: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', invert: false },
   { name: 'Tailwind', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', invert: false },
-  { name: 'LLMs', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg', invert: true },
+  { name: 'Antigravity', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@12.0.0/icons/google-gemini.svg', invert: true },
+  { name: 'ChatGPT', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@12.0.0/icons/openai.svg', invert: true },
+  { name: 'Claude', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@12.0.0/icons/anthropic.svg', invert: true },
   { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', invert: false },
   { name: 'Lucide', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@12.0.0/icons/lucide.svg', invert: true },
   { name: 'JS (ES6+)', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', invert: false },
@@ -84,7 +86,7 @@ export const ThreeDMarquee = ({
                       
                       <img
                         className={cn(
-                          'h-16 w-16 max-sm:h-12 max-sm:w-12 object-contain select-none transition-transform duration-300 group-hover/card:scale-110',
+                          'h-24 w-24 max-sm:h-18 max-sm:w-18 object-contain select-none transition-transform duration-300 group-hover/card:scale-110',
                           item.invert && 'invert brightness-200'
                         )}
                         src={item.logo}

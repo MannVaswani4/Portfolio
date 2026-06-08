@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Sections
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
-import { Experience } from './sections/Experience';
-import { Education } from './sections/Education';
 import { Projects } from './sections/Projects';
 import { Journey } from './sections/Journey';
 import { ContentShowcase } from './sections/ContentShowcase';
@@ -47,9 +45,6 @@ function App() {
       <main className="relative z-10">
         <Hero />
         <About />
-        <Divider />
-        <Experience />
-        <Education />
         <Divider />
         <Projects />
         <Journey />
