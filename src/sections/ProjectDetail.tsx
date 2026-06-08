@@ -142,12 +142,12 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-full aspect-[21/9] rounded-[2rem] overflow-hidden border border-outline-variant/15 relative bg-[#0e0e0e] shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+            className={`w-full ${project.id === 'accredian' || project.id === 'humanness' ? 'aspect-[16/10] md:aspect-[16/9]' : 'aspect-[21/9]'} rounded-[2rem] overflow-hidden border border-outline-variant/15 relative bg-[#0e0e0e] shadow-[0_12px_40px_rgba(0,0,0,0.5)]`}
           >
             <img
               src={project.coverImage}
               alt={project.title}
-              className={`w-full h-full object-cover ${project.id === 'agrilo' ? 'object-top' : 'object-center'}`}
+              className={`w-full h-full object-cover ${project.id === 'agrilo' || project.id === 'accredian' || project.id === 'humanness' ? 'object-top' : 'object-center'}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/60 via-transparent to-transparent"></div>
           </motion.div>
