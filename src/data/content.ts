@@ -63,6 +63,16 @@ export const content = {
         "Collaborated directly with front-end engineering teams to ensure pixel-perfect design implementation",
         "Developed and maintained design systems to streamline design-to-development workflows"
       ]
+    },
+    {
+      company: "Harvard Project for Asian and International Relations (HPAIR)",
+      role: "Delegate (Apprenticeship)",
+      period: "Aug 2024 | Bangkok City, Thailand (On-site)",
+      summary: "My HPAIR 2024 Experience in Bangkok 🌏",
+      points: [
+        "Attending HPAIR in Bangkok was an inspiring journey filled with learning and meaningful connections. The sessions provided deep insights into leadership, business strategy, and the dynamic landscape of Asia, broadening my understanding of the region's challenges and opportunities.",
+        "A highlight was the cultural fair, where I experienced the rich diversity of Asian cultures, reinforcing the importance of cross-cultural exchange. This experience has left me motivated to apply what I've learned and contribute to positive change in our communities."
+      ]
     }
   ],
 
