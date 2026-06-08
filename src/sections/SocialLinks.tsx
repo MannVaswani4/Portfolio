@@ -61,7 +61,7 @@ export const SocialLinks: React.FC = () => {
             {/* Email */}
             <a 
               className="group flex flex-col items-center gap-3" 
-              href="mailto:contact@mannvaswani.com"
+              href="mailto:mannvaswani4@gmail.com"
             >
               <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-surface-container border border-outline-variant/15 transition-all duration-300 group-hover:bg-[#EA4335] group-hover:border-[#EA4335] group-hover:shadow-[0_0_25px_rgba(234,67,53,0.45)] group-hover:-translate-y-2 text-on-surface group-hover:text-white">
                 <Mail size={24} strokeWidth={1.5} />

@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Sections
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
+import { Experience } from './sections/Experience';
 import { Projects } from './sections/Projects';
+import { Certifications } from './sections/Certifications';
+import EducationAndCertifications from './sections/EducationAndCertifications';
 import { Journey } from './sections/Journey';
-import { ContentShowcase } from './sections/ContentShowcase';
 import { SocialLinks } from './sections/SocialLinks';
 import { Divider } from './components/ui/Divider';
 import { ProjectDetail } from './sections/ProjectDetail';
@@ -81,9 +83,16 @@ function App() {
         <Hero />
         <About />
         <Divider />
+        <Experience />
+        <Divider />
         <Projects onSelectProject={handleSelectProject} />
+        <Divider />
+        <Certifications />
+        <Divider />
+        <EducationAndCertifications />
+        <Divider />
         <Journey />
-        <ContentShowcase />
+        <Divider />
         <SocialLinks />
       </main>
 
@@ -91,7 +100,6 @@ function App() {
       <footer className="relative z-10 border-t border-border py-8 text-center bg-bg-dark">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted">
           <p>© {new Date().getFullYear()} Mann Vaswani.</p>
-          <p className="mt-2 md:mt-0 font-mono text-xs">Built with React + Framer Motion</p>
         </div>
       </footer>
 
