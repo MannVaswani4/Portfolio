@@ -70,17 +70,9 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
             } else if (id === 'humanness') {
               colSpan = "md:col-span-8";
               layoutType = "split-left";
-            } else if (id === 'rishiverse') {
+            } else if (id === 'globalair') {
               colSpan = "md:col-span-4";
               layoutType = "vertical-standard";
-            } else if (id === 'vectordb' || id === 'sentinel') {
-              colSpan = "md:col-span-4";
-              cardHeight = "min-h-[250px] md:h-[320px]";
-              layoutType = "icon-card";
-            } else if (id === 'web3identity') {
-              colSpan = "md:col-span-4";
-              cardHeight = "min-h-[250px] md:h-[320px]";
-              layoutType = "bg-card";
             }
 
             return (

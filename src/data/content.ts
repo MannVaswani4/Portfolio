@@ -322,47 +322,40 @@ export const content = {
       ]
     },
     {
-      id: "rishiverse",
-      title: "Rishiverse",
-      subtitle: "Unified Student ERP",
-      category: "Full Stack",
-      tech: ["React", "Node.js", "Express", "PostgreSQL"],
-      date: "Aug 2024",
-      description: "A Unified Student ERP system designed to centralize academic workflow management for 5,500+ users.",
-      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdFqznERDNeVt48DX-vQKjjoB9r0IcmnzpIUaWu7FutxSBnABzJ0ta9HBEcOl-cL0E9P-WXmde7Gs_jH6jBUN9Pw__Oh9Ss8JNLIoPTYs2sv4GNq38yhur_iTg1-NizOj4kWExLDVWskg2Uk4u4rqQh98tM495c3JQmBL_zqxaCqPcVYrFNMbi3t65WzWHkPsjHGBKRnXeAcEMkas9lntKcVxNgfp_0Qr4HzdMy69pthDuP0JBVsqLhnFFpSe7H0mgEFjnEAHD7oP0",
-      demoLink: "#",
-      pdfLink: "#"
-    },
-    {
-      id: "vectordb",
-      title: "VectorDB Optimizer",
-      subtitle: "Pinecone & Milvus Optimization",
-      category: "Systems",
-      tech: ["Go", "gRPC"],
-      date: "2025",
-      description: "High-performance indexing strategies for Pinecone and Milvus databases, reducing query latency by up to 40%.",
-      demoLink: "#"
-    },
-    {
-      id: "sentinel",
-      title: "Sentinel AI Monitor",
-      subtitle: "Model Drift and Bias Monitoring",
-      category: "AI Ops",
-      tech: ["Dask", "FastAPI"],
-      date: "2025",
-      description: "Real-time data drift detection and model bias monitoring for production machine learning prediction pipelines.",
-      demoLink: "#"
-    },
-    {
-      id: "web3identity",
-      title: "Web3 Identity Engine",
-      subtitle: "Decentralized AI identity verification protocol",
-      category: "Security",
-      tech: ["Solidity", "ZK-Snarks"],
-      date: "2025",
-      description: "Decentralized AI identity verification protocol.",
-      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDOTiNuag99HnyV7RiXCfqMS3t5ygtz7zcruBfbZEhHSx2Q9eKw44y-2MntNt993DZdfSIQz1d5lpNXSfyztmnoqM__kX17xx3l7p-Z-7d4gNTFyhTDYUXkUKi6l0uFESHT9Cd6SLgi0eRq5AQT08fXTiDV5D1W4nlRjiQuK8LZsGMoWULbD5H5CZ0b3It7BsT_UrINUnzGUOzOueMc_0n0QmPEsXjjtjhbDilSfc18tfQ5ux9mmO8NBNroJcIQKNthmKGpcs6YjRV4",
-      demoLink: "#"
+      id: "globalair",
+      title: "Global Air Quality Intelligence Platform",
+      subtitle: "Large-Scale Environmental Data Science & Machine Learning Platform",
+      category: "Data Analysis",
+      date: "2026",
+      tech: ["Python", "Machine Learning", "Streamlit", "Data Pipelines", "Statistical Analysis"],
+      description: "A large-scale environmental data science project integrating OpenAQ sensor data and World Bank indicators to analyze, model, and visualize global air pollution patterns using machine learning and statistical inference.",
+      coverImage: "/project assets/Global/Cover.png",
+      pdfLink: "https://drive.google.com/file/d/1nN2tO-gUuWnaKhaU0MoIUE06XbaOK9EN/view?usp=sharing",
+      details: [
+        {
+          subtitle: "Problem",
+          content: "Air pollution is responsible for approximately 7 million premature deaths annually, yet policymaking is often based on fragmented, regional, or single-pollutant studies. Most existing analyses fail to integrate real sensor data with socioeconomic indicators, making it difficult to understand inequality, seasonality, and policy impact at a global scale.\n\nThis project aimed to build a data-driven, reproducible analytical framework capable of answering high-stakes questions about how pollution, income, urbanization, and health interact across countries and over time.",
+          image: "/project assets/Global/sub1.png"
+        },
+        {
+          subtitle: "The Data & Pipeline",
+          content: "I led the construction of a multi-source analytical dataset by integrating 30,241 raw air-quality measurements from OpenAQ and 3,092 socioeconomic records from the World Bank. These were standardized, cleaned, and aggregated into 946 country-year records with 33 engineered features.\n\nKey technical steps included ISO-2 → ISO-3 country code harmonization, removal of invalid coordinates and pollutant values, prevention of data leakage by deduplicating country-year pairs, and aggregation of sensor data into mean, median, variance, and counts. The result was a model-ready dataset linking pollution to GDP, urbanization, income class, and exposure metrics.",
+          image: "/project assets/Global/sub2.png"
+        },
+        {
+          subtitle: "Analysis & Machine Learning",
+          content: "I conducted exploratory data analysis, statistical hypothesis testing, and machine learning to uncover global pollution patterns. Validated multiple hypotheses, including a strong negative correlation between urbanization and PM2.5, a statistically significant seasonal spike in winter vs summer pollution, and strong PM2.5-PM10 co-movement. A Random Forest Regressor was trained to predict PM2.5 using GDP per capita, urbanization, and pollutant values, achieving an R² of 0.82, RMSE of 14.29, and MAE of 4.70. This demonstrated that air pollution is driven by non-linear socio-economic and environmental interactions.",
+          image: "/project assets/Global/sub3.png"
+        },
+        {
+          subtitle: "Visualization & Impact",
+          content: "To make the insights actionable, I built a Streamlit dashboard that allows users to compare countries and income groups, visualize trends from 2010–2023, explore seasonal patterns, validate hypotheses interactively, and view ML predictions in real time. The platform transforms raw environmental data into a policy-grade intelligence system for researchers, governments, and climate analysts.",
+          image: "/project assets/Global/sub4.png"
+        }
+      ],
+      gallery: [
+        "/project assets/Global/sub5.png"
+      ]
     }
   ],
 
