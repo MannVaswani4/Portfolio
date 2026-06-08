@@ -7,7 +7,8 @@ const skillsMap: Record<string, string[]> = {
   "RealtyEaseAI": ["AI Strategy", "CRM Automation", "PropTech", "Outbound Growth"],
   "MoveInSync": ["React", "TypeScript", "Tailwind CSS", "Enterprise UX"],
   "Rishihood University": ["MERN Stack", "ERP Architecture", "REST API", "Role-Based Access"],
-  "Praxto Designs": ["UI/UX Design", "Figma", "Design Systems", "User Research"]
+  "Praxto Designs": ["UI/UX Design", "Figma", "Design Systems", "User Research"],
+  "Harvard Project for Asian and International Relations (HPAIR)": ["Leadership", "Business Strategy", "Geopolitics", "Cross-Cultural Communication"]
 };
 
 const imageMap: Record<string, string[]> = {
@@ -30,10 +31,12 @@ const CompanyLogo: React.FC<{ company: string }> = ({ company }) => {
     logoFile = "RealtyEaseAI.png";
   } else if (c.includes("praxto")) {
     logoFile = "PraxtoDesigns.png";
+  } else if (c.includes("hpair")) {
+    logoFile = "HPAIR.png";
   }
   
   return (
-    <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 bg-white overflow-hidden shadow-md border border-white/10 p-0.5">
+    <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 bg-white overflow-hidden shadow-md border border-white/10 p-0.5">
       <img src={`/logos/${logoFile}`} alt={company} className="w-full h-full object-contain" />
     </div>
   );
@@ -100,7 +103,7 @@ export const Experience: React.FC = () => {
         </div>
 
         {/* Timeline Cards in zigzag layout & floating animation */}
-        <div className="space-y-12 md:space-y-20 max-w-[1100px] mx-auto">
+        <div className="space-y-12 md:space-y-20 max-w-[1200px] mx-auto">
           {content.experience.map((exp, idx) => {
             const companySkills = skillsMap[exp.company] || [];
             
@@ -110,7 +113,7 @@ export const Experience: React.FC = () => {
             return (
               <div
                 key={idx}
-                className={`relative flex flex-col md:flex-row items-center md:justify-between w-full ${
+                className={`relative flex flex-col md:flex-row items-center md:justify-between w-full gap-8 ${
                   isEven ? '' : 'md:flex-row-reverse'
                 }`}
               >
@@ -122,48 +125,52 @@ export const Experience: React.FC = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.1 }}
                   onClick={() => setActiveExp(exp)}
-                  className={`w-full md:w-[48%] cursor-pointer`}
+                  className={`w-full md:w-[49%] cursor-pointer`}
                 >
                   {/* Card Container styled exactly like the reference screenshot */}
-                  <div className="glass-card bg-[#181818]/90 border border-white/5 hover:border-primary-container/30 p-6 md:p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,240,255,0.08)]">
-                    {/* Summary bullet text at the top */}
-                    <p className="font-sans text-sm md:text-base text-on-surface-variant leading-relaxed mb-6 text-left font-medium">
-                      {exp.summary}
-                    </p>
+                  <div className="glass-card bg-[#181818]/90 border border-white/5 hover:border-primary-container/30 p-8 md:p-10 rounded-2xl relative overflow-hidden transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,240,255,0.08)] min-h-[260px] flex flex-col justify-between">
+                    <div>
+                      {/* Summary bullet text at the top */}
+                      <p className="font-sans text-base md:text-lg text-on-surface/90 leading-relaxed mb-6 text-left font-medium">
+                        {exp.summary}
+                      </p>
 
-                    {/* Thin separation line */}
-                    <div className="h-[1px] bg-white/5 w-full mb-4" />
-
-                    {/* Bottom branding row: circular logo, company name, position role */}
-                    <div className="flex items-center gap-4">
-                      <CompanyLogo company={exp.company} />
-                      
-                      <div className="flex-grow text-left">
-                        <h4 className="font-display text-lg font-bold text-white leading-tight">
-                          {exp.company}
-                        </h4>
-                        <p className="font-sans text-xs text-on-surface-variant font-medium mt-0.5">
-                          {exp.role} • <span className="font-mono text-[10px] text-secondary font-semibold">{exp.period.split('|')[0].trim()}</span>
-                        </p>
-                      </div>
+                      {/* Thin separation line */}
+                      <div className="h-[1px] bg-white/5 w-full mb-6" />
                     </div>
 
-                    {/* Subtle skills tags inside the card */}
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {companySkills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="font-mono text-[9px] px-2.5 py-0.5 bg-white/5 border border-white/10 rounded-full text-on-surface-variant uppercase tracking-wider font-semibold"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                    <div>
+                      {/* Bottom branding row: circular logo, company name, position role */}
+                      <div className="flex items-center gap-4">
+                        <CompanyLogo company={exp.company} />
+                        
+                        <div className="flex-grow text-left">
+                          <h4 className="font-display text-xl md:text-2xl font-bold text-white leading-tight">
+                            {exp.role}
+                          </h4>
+                          <p className="font-sans text-sm md:text-base text-on-surface-variant font-medium mt-1">
+                            {exp.company} • <span className="font-mono text-xs text-secondary font-semibold">{exp.period.split('|')[0].trim()}</span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Subtle skills tags inside the card */}
+                      <div className="mt-6 flex flex-wrap gap-2">
+                        {companySkills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="font-mono text-[10px] px-3 py-1 bg-white/5 border border-white/10 rounded-full text-on-surface-variant uppercase tracking-wider font-semibold"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
                 
                 {/* Empty spacer to push content left/right on desktop */}
-                <div className="hidden md:block w-[48%]" />
+                <div className="hidden md:block w-[49%]" />
               </div>
             );
           })}
