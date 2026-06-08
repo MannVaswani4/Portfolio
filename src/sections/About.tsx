@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
-import { Palette, Code, Instagram, Linkedin, Github } from 'lucide-react';
+import { Instagram, Linkedin, Github } from 'lucide-react';
 import { ThreeDMarquee } from '../components/ui/3d-marquee';
 import { CountUp } from '../components/ui/CountUp';
 import { Card } from '../components/ui/card';
@@ -169,7 +169,7 @@ export const About: React.FC = () => {
         {/* Experience Section placed right after Core Stack */}
         <Experience />
 
-        {/* 3. Philosophy Section (The Ethos) */}
+        {/* 3. Certifications Section */}
         <section className="relative py-16 px-8 overflow-hidden rounded-3xl border border-outline-variant/10">
           {/* Subtle Grid backdrop */}
           <div className="absolute inset-0 bg-surface-low/60 backdrop-blur-md -z-10"></div>
@@ -178,38 +178,42 @@ export const About: React.FC = () => {
             backgroundSize: '100px 100px'
           }}></div>
 
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <span className="font-mono text-xs text-secondary tracking-[0.3em] uppercase font-bold">The Ethos</span>
-            <h3 className="font-display text-3xl md:text-4xl font-extrabold text-on-surface">Precision in Every Pixel</h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left pt-6">
-              {/* Pillar 1 */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Code className="text-primary-container" size={20} />
-                  <h4 className="font-display text-base font-bold text-on-surface">Clean Code, Complex Thinking</h4>
-                </div>
-                <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
-                  I believe in writing code that is not just functional but maintainable and elegant. Architecture is the foundation upon which great user experiences are built.
-                </p>
-              </div>
-
-              {/* Pillar 2 */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Palette className="text-secondary" size={20} />
-                  <h4 className="font-display text-base font-bold text-on-surface">User-Centric Design</h4>
-                </div>
-                <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
-                  Technology should be invisible. My design philosophy focuses on reducing friction and creating interfaces that feel like a natural extension of the user's intent.
-                </p>
-              </div>
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-2">
+              <span className="font-mono text-xs text-secondary tracking-[0.3em] uppercase font-bold">Credentials</span>
+              <h3 className="font-display text-3xl md:text-4xl font-extrabold text-on-surface">Professional Certifications</h3>
             </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+              {/* Cert 1 */}
+              <div className="flex flex-col sm:flex-row gap-6 items-start bg-surface-lowest/40 p-6 rounded-2xl border border-outline-variant/5 hover:border-primary-container/20 transition-all">
+                <img src="/AIforprod.png" alt="AI for Product Management" className="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0 rounded-lg" />
+                <div className="space-y-2">
+                  <h4 className="font-display text-lg font-bold text-on-surface leading-snug">AI for Product Management</h4>
+                  <p className="font-mono text-xs text-on-surface-variant/80">Google Cloud | Pendo &bull; Jun 2026</p>
+                  <p className="font-sans text-xs text-on-surface-variant leading-relaxed">
+                    Trained in LLM application, AI-powered product strategy, data-driven decision making, and product-led growth tactics.
+                  </p>
+                  <a href="https://www.credly.com/badges/ae42dd2a-0c41-4e0d-83cc-9b350c83c1cd/public_url" target="_blank" rel="noreferrer" className="inline-block pt-1 font-mono text-[10px] font-bold uppercase tracking-wider text-primary-container hover:underline">
+                    View Credential
+                  </a>
+                </div>
+              </div>
 
-            <div className="pt-8 flex justify-center">
-              <blockquote className="italic font-sans text-on-surface text-lg border-l-4 border-primary-container pl-6 py-2 max-w-2xl text-left leading-relaxed">
-                "Great products aren't just built; they are crafted through a meticulous balance of logic, empathy, and technical excellence."
-              </blockquote>
+              {/* Cert 2 */}
+              <div className="flex flex-col sm:flex-row gap-6 items-start bg-surface-lowest/40 p-6 rounded-2xl border border-outline-variant/5 hover:border-primary-container/20 transition-all">
+                <img src="/PMbasics.png" alt="Product Management Basics" className="w-16 h-16 sm:w-20 sm:h-20 object-contain shrink-0 rounded-lg" />
+                <div className="space-y-2">
+                  <h4 className="font-display text-lg font-bold text-on-surface leading-snug">Product Management Basics</h4>
+                  <p className="font-mono text-xs text-on-surface-variant/80">Pendo | Mind the Product &bull; Jun 2026</p>
+                  <p className="font-sans text-xs text-on-surface-variant leading-relaxed">
+                    Trained in the PM lifecycle, focusing on product discovery, roadmapping, prioritization, and stakeholder management.
+                  </p>
+                  <a href="https://www.credly.com/badges/a1fc1cce-a690-42e9-89b0-2b509417f972/public_url" target="_blank" rel="noreferrer" className="inline-block pt-1 font-mono text-[10px] font-bold uppercase tracking-wider text-primary-container hover:underline">
+                    View Credential
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

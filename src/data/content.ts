@@ -18,7 +18,7 @@ export const content = {
     {
       company: "RealtyEaseAI",
       role: "Business Development Supervisor",
-      period: "Apr 2025 – Sep 2025 (Remote)",
+      period: "Mar. 2022 – Apr. 2023 | Khandwa, India",
       summary: "Led client communications, onboarding, strategy and product feedback loops.",
       points: [
         "Youngest early employee; led business development, strategy, and outbound growth",
