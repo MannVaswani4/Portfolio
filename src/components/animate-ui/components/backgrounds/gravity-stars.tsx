@@ -54,7 +54,7 @@ function GravityStarsBackground({
   const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
   const animRef = React.useRef<number | null>(null);
   const starsRef = React.useRef<Particle[]>([]);
-  const mouseRef = React.useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const mouseRef = React.useRef<{ x: number; y: number }>({ x: -10000, y: -10000 });
   const [dpr, setDpr] = React.useState(1);
   const [canvasSize, setCanvasSize] = React.useState({
     width: 800,
@@ -342,6 +342,40 @@ function GravityStarsBackground({
       animRef.current = null;
     };
   }, [animate]);
+
+  React.useEffect(() => {
+    const handleGlobalPointerMove = (e: MouseEvent | TouchEvent) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      let clientX = 0;
+      let clientY = 0;
+      if ('touches' in e) {
+        const t = e.touches[0];
+        if (!t) return;
+        clientX = t.clientX;
+        clientY = t.clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+      mouseRef.current = { x: clientX - rect.left, y: clientY - rect.top };
+    };
+
+    const handleGlobalMouseLeave = () => {
+      mouseRef.current = { x: -10000, y: -10000 };
+    };
+
+    window.addEventListener('mousemove', handleGlobalPointerMove, { passive: true });
+    window.addEventListener('touchmove', handleGlobalPointerMove, { passive: true });
+    window.addEventListener('mouseleave', handleGlobalMouseLeave, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handleGlobalPointerMove);
+      window.removeEventListener('touchmove', handleGlobalPointerMove);
+      window.removeEventListener('mouseleave', handleGlobalMouseLeave);
+    };
+  }, []);
 
   return (
     <div

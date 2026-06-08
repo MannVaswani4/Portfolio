@@ -47,8 +47,10 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }
     >
       {/* GravityStarsBackground Backdrop */}
       <GravityStarsBackground
-        className="fixed inset-0 z-0 pointer-events-none opacity-40"
+        className="fixed inset-0 z-0 pointer-events-none opacity-85"
         starsCount={100}
+        starsOpacity={0.9}
+        glowIntensity={20}
         movementSpeed={0.25}
       />
 
