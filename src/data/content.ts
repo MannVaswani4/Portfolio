@@ -268,19 +268,23 @@ export const content = {
       details: [
         {
           subtitle: "Problem & Opportunity",
-          content: "Students enrolled in online learning platforms often rely on external applications like WhatsApp, Telegram, and LinkedIn for discussions, networking, and doubt solving. While fast and familiar, these platforms create fragmented learning experiences because conversations are disconnected from the actual course context. This reduces engagement within the platform, weakens community bonds among peers, and makes it harder for educators to support students at scale. Accredian, a rapidly growing online education platform, needed a native communication layer that keeps students engaged, supported, and connected — entirely within the course environment."
+          content: "Students enrolled in online learning platforms often rely on external applications like WhatsApp, Telegram, and LinkedIn for discussions, networking, and doubt solving. While fast and familiar, these platforms create fragmented learning experiences because conversations are disconnected from the actual course context. This reduces engagement within the platform, weakens community bonds among peers, and makes it harder for educators to support students at scale. Accredian, a rapidly growing online education platform, needed a native communication layer that keeps students engaged, supported, and connected — entirely within the course environment.",
+          image: "/project assets/Accredian/Screenshot 2026-06-08 at 4.48.31 PM.png"
         },
         {
           subtitle: "The Solution",
-          content: "The Accredian Student Communication Dashboard is a unified, context-aware communication system embedded directly into the learning experience. It includes a Doubt Resolution Hub where students submit course-specific questions, tag instructors or mentors, track response status, and search previously resolved doubts — eliminating the back-and-forth of chat-based support. A structured Peer Discussion Forum with upvoting and expert-marked answers drives collaborative learning. The Cohort Networking Hub enables profile-based peer discovery and direct messaging, keeping students connected without needing LinkedIn."
+          content: "The Accredian Student Communication Dashboard is a unified, context-aware communication system embedded directly into the learning experience. It includes a Doubt Resolution Hub where students submit course-specific questions, tag instructors or mentors, track response status, and search previously resolved doubts — eliminating the back-and-forth of chat-based support. A structured Peer Discussion Forum with upvoting and expert-marked answers drives collaborative learning. The Cohort Networking Hub enables profile-based peer discovery and direct messaging, keeping students connected without needing LinkedIn.",
+          image: "/project assets/Accredian/Screenshot 2026-06-08 at 4.48.37 PM.png"
         },
         {
           subtitle: "AI & Mentorship Features",
-          content: "An AI Doubt Assistant provides instant answers for common questions by drawing from course material, past resolutions, and community answers — with intelligent handoff to human instructors for complex queries. The Live Interaction Layer includes live Q&A sessions, recorded office hours, and interactive polls tied to course milestones. A Progress & Milestone Feed celebrates student achievements, builds a shared sense of momentum, and reinforces community identity throughout the learning journey."
+          content: "An AI Doubt Assistant provides instant answers for common questions by drawing from course material, past resolutions, and community answers — with intelligent handoff to human instructors for complex queries. The Live Interaction Layer includes live Q&A sessions, recorded office hours, and interactive polls tied to course milestones. A Progress & Milestone Feed celebrates student achievements, builds a shared sense of momentum, and reinforces community identity throughout the learning journey.",
+          image: "/project assets/Accredian/Screenshot 2026-06-08 at 4.48.47 PM.png"
         },
         {
           subtitle: "Design Decisions & Business Impact",
-          content: "Key UX decisions included surfacing the communication hub contextually (per module, not as a global tab), using async-first design to respect timezone diversity, and separating social networking from academic doubt resolution to reduce noise. Expected outcomes include a 35-50% reduction in students leaving the platform for external tools, 2-3x increase in peer interaction rates, and faster doubt resolution that directly correlates with course completion rates — translating to stronger NPS, lower churn, and higher referral rates for Accredian."
+          content: "Key UX decisions included surfacing the communication hub contextually (per module, not as a global tab), using async-first design to respect timezone diversity, and separating social networking from academic doubt resolution to reduce noise. Expected outcomes include a 35-50% reduction in students leaving the platform for external tools, 2-3x increase in peer interaction rates, and faster doubt resolution that directly correlates with course completion rates — translating to stronger NPS, lower churn, and higher referral rates for Accredian.",
+          image: "/project assets/Accredian/Screenshot 2026-06-08 at 4.48.52 PM.png"
         }
       ]
     },
