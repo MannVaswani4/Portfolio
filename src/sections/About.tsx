@@ -48,6 +48,7 @@ export const About: React.FC = () => {
                 <div className="space-y-2">
                   <div className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-[#a8ff35] font-display flex items-baseline leading-none">
                     <CountUp from={0} to={2} duration={1} />
+                    <span className="text-2xl md:text-3xl lg:text-4xl ml-0.5">+</span>
                   </div>
                   <p className="text-xs sm:text-sm lg:text-base text-on-surface-variant font-medium leading-snug pt-1">
                     Years of Experience

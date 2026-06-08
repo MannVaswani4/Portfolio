@@ -18,7 +18,7 @@ export const content = {
     {
       company: "RealtyEaseAI",
       role: "Business Development Supervisor",
-      period: "Mar 2022 – Apr 2023 (Khandwa) | Apr 2025 – Sep 2025 (Remote)",
+      period: "Apr 2025 – Sep 2025 (Remote)",
       summary: "Led client communications, onboarding, strategy and product feedback loops.",
       points: [
         "Youngest early employee; led business development, strategy, and outbound growth",
@@ -85,30 +85,249 @@ export const content = {
 
   projects: [
     {
-      title: "AgriSphere",
-      subtitle: "AI-Powered Digital Agronomist",
-      tech: ["Node.js", "Express", "MongoDB", "React", "Leaflet", "PWA"],
-      date: "Oct 2025",
-      points: [
-        "AI crop disease diagnosis with ~95% accuracy",
-        "Real-time irrigation using weather and soil data",
-        "PWA with multilingual and offline support for low-literacy farmers"
+      id: "deceptivision",
+      title: "DeceptiVision — AI Powered Deception Detection",
+      subtitle: "Multimodal AI Deception Detection System",
+      category: "AI/ML",
+      date: "2025",
+      tech: ["AI/ML", "Computer Vision", "Deep Learning", "Multimodal Fusion"],
+      description: "DeceptiVision is a multimodal AI system that detects deception by analyzing facial micro-expressions, body language, and video-based behavioral cues.",
+      coverImage: "/project assets/Deceptivision/Cover.png",
+      demoLink: "https://decepti-vision.vercel.app/",
+      codeLink: "https://github.com/MannVaswani4/DeceptiVision",
+      pdfLink: "https://drive.google.com/file/d/1YDhZiby4CDTxSA4VUZ5WG_vgfxgb8HQW/view?usp=sharing",
+      details: [
+        {
+          subtitle: "Why Deception Detection Is Hard",
+          content: "Humans are poor at detecting lies from observation alone. Micro-expressions, subtle body movements, and behavioral inconsistencies happen in milliseconds and are almost impossible to track reliably at scale. Traditional systems rely on single signals like facial emotion or speech, which leads to low accuracy and high bias.",
+          image: "/project assets/Deceptivision/sub1.png"
+        },
+        {
+          subtitle: "A Multimodal Behavioral Intelligence System",
+          content: "DeceptiVision combines facial micro-expressions, body-pose analysis, and video-based behavioral cues into a single AI pipeline. By extracting and learning from multiple human signals at once, the system delivers far more reliable truth vs deception predictions than single-channel models.",
+          image: "/project assets/Deceptivision/sub2.png"
+        },
+        {
+          subtitle: "From Raw Video to AI-Driven Insight",
+          content: "The platform processes raw interview videos into structured datasets through frame extraction, face detection, emotion embedding, and body-pose estimation. These signals are then fed into deep-learning models trained to classify deceptive versus truthful behavior with confidence scoring.",
+          image: "/project assets/Deceptivision/sub3.png"
+        },
+        {
+          subtitle: "Built for Research, Forensics, and Behavioral Analysis",
+          content: "DeceptiVision is designed as a reproducible research system that can be extended with new data sources like audio, biometrics, or additional video streams. It enables academic researchers, analysts, and security teams to explore deception in a scalable, data-driven way."
+        }
+      ]
+    },
+    {
+      id: "tripadvisor",
+      title: "TripAdvisor — AI Trip Planner Product Breakdown",
+      subtitle: "AI Trip Planner Product Breakdown & UX Audit",
+      category: "Product Teardown",
+      date: "2026",
+      tech: ["Product Strategy", "UX Audit", "Behavioral Design", "Product Thinking"],
+      description: "A detailed product teardown of TripAdvisor’s AI-powered trip planning flow, analyzing user journeys, UX decisions, business logic, and opportunities to improve trust, conversion, and itinerary quality.",
+      coverImage: "/project assets/TripAdvisor/Cover.png",
+      pdfLink: "https://drive.google.com/file/d/1B8OHBeFXaKtKP9kzmtjfrLUQH0cIhY3p/view?usp=sharing",
+      details: [
+        {
+          subtitle: "Product Overview",
+          content: "TripAdvisor is one of the world’s largest travel platforms, hosting over 1 billion reviews across 8 million businesses and serving 400M+ monthly travelers across 43 markets. The AI Trip Planner is designed to simplify one of the hardest parts of travel — converting inspiration into a structured, bookable itinerary — by allowing users to generate personalized travel plans using AI instead of manual research.",
+          image: "/project assets/TripAdvisor/Sub1.png"
+        },
+        {
+          subtitle: "User & Journey",
+          content: "The experience starts when users input their destination and travel dates, followed by preference selection such as interests and travel style. Users feel increasingly confident as the AI asks relevant questions, making the system feel personalized and trustworthy. Once the itinerary is generated, users browse hotels, activities, and attractions with integrated reviews and map views, giving them both inspiration and validation in one flow.",
+          image: "/project assets/TripAdvisor/sub2.png"
+        },
+        {
+          subtitle: "Pain Points & Insights",
+          content: "Despite a smooth UI and fast AI generation, users face friction when itineraries ignore budget preferences and geographic proximity. Activities are often randomly ordered, forcing users to manually rearrange plans even though location data is already available. This creates unnecessary cognitive load and reduces trust in the AI’s understanding of real-world travel behavior.",
+          image: "/project assets/TripAdvisor/sub3.png"
+        },
+        {
+          subtitle: "Product Strategy",
+          content: "By adding budget controls (economy, moderate, luxury) and automatically grouping activities by proximity, the AI planner could generate more realistic, efficient, and trustworthy itineraries. These changes would reduce manual editing, improve itinerary relevance, and directly impact TripAdvisor’s north star metric — more users saving itineraries and converting to bookings.",
+          image: "/project assets/TripAdvisor/sub4.png"
+        }
       ],
+      gallery: [
+        "/project assets/TripAdvisor/sub5.png",
+        "/project assets/TripAdvisor/sub6.png"
+      ]
+    },
+    {
+      id: "agrilo",
+      title: "Agrilo — AI-Powered Digital Agronomist",
+      subtitle: "Multimodal AI Crop Diagnostics & Smart Irrigation Platform",
+      category: "Full Stack Development",
+      date: "2025",
+      tech: ["React", "Node.js", "MongoDB", "Computer Vision", "OpenEPI", "PWA"],
+      description: "A full-stack, AI-driven agriculture platform that helps smallholder farmers diagnose crop diseases, optimize irrigation, and plan climate-adaptive farming using real-time data and computer vision.",
+      coverImage: "/project assets/Agrilo/Cover.png",
+      pdfLink: "https://drive.google.com/file/d/1J4FpzfNSJPhC1ro2Ge_Nmz7qQP5PQgOd/view?usp=sharing",
+      details: [
+        {
+          subtitle: "The Global Problem",
+          content: "Smallholder farmers produce over 70% of the world’s food, yet they operate under extreme risk due to crop disease, water scarcity, and climate instability. 40% of crops are lost due to preventable diseases and poor irrigation, while 60% of freshwater is wasted by inefficient irrigation. Climate unpredictability makes traditional planting calendars unreliable, leaving farmers to make high-stakes decisions based on guesswork."
+        },
+        {
+          subtitle: "The Product Vision",
+          content: "Agrilo (also called AgriSphere in the platform architecture) was designed as a digital agronomist — an AI system that translates complex climate, soil, and crop data into simple, daily farming decisions. The goal was to give farmers clear disease diagnoses, precise watering instructions, climate-aware planting guidance, and a single 'what to do today' command center, aligning with UN Sustainable Development Goals 1, 2, 6, and 13.",
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.21 PM.png"
+        },
+        {
+          subtitle: "The AI System",
+          content: "Agrilo is powered by OpenEPI datasets and computer vision. After defining their farm boundary via map coordinates, the system analyzes soil composition, forecasts, and crop health signals. Key modules include the AI Crop Doctor (plant disease recognition with ~95% accuracy), Smart Irrigation Advisor (calculates watering requirements to reduce waste by 40%), and Climate-Smart Planner (crop ranking and risk forecasting).",
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.29 PM.png"
+        },
+        {
+          subtitle: "Engineering & Accessibility",
+          content: "Designed for low-literacy, low-connectivity, and low-end devices: Agrilo includes a Progressive Web App (PWA) with offline sync, multi-language support (English, Hindi, Spanish, French, German), icon-driven UI, AI voice assistance, and geo-mapped farm boundaries built with a lightweight React frontend and Node.js + MongoDB backend.",
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.42 PM.png"
+        }
+      ],
+      gallery: [
+        "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.49 PM.png"
+      ]
+    },
+    {
+      id: "studio448",
+      title: "Studio 448 — Custom Property Booking Platform",
+      subtitle: "Full-Stack Hospitality & Booking Platform",
+      category: "Full Stack Development",
+      date: "2026",
+      tech: ["React", "Node.js", "Express", "Stripe", "Live Chat", "MongoDB"],
+      description: "A full-stack property booking platform built from scratch for a real client, featuring payments, chat, booking management, and a fully custom user experience designed around business needs.",
+      coverImage: "/project assets/Studio448/Cover.png",
+      demoLink: "https://studio448.vercel.app/",
+      details: [
+        {
+          subtitle: "The Challenge",
+          content: "The property owner wanted to move away from third-party marketplaces and needed a dedicated website that reflected their brand, controlled the customer experience, and supported direct bookings. The goal was to build a product that worked for both guests and the business — not just a listing page.",
+          image: "/project assets/Studio448/Screenshot 2026-06-08 at 3.53.28 PM.png"
+        },
+        {
+          subtitle: "Solution",
+          content: "Studio 448 was designed entirely around the client’s workflow and guest journey. Users can browse the property, view availability, chat with the host, select packages, and complete bookings in one smooth flow — all inside a single, purpose-built product.",
+          image: "/project assets/Studio448/Screenshot 2026-06-08 at 3.53.39 PM.png"
+        },
+        {
+          subtitle: "The System",
+          content: "The platform includes secure payments, booking records, user profiles, live chat, downloadable invoices, and booking breakdowns. Everything was built as a custom system rather than stitched together from templates, ensuring reliability, flexibility, and scalability.",
+          image: "/project assets/Studio448/Screenshot 2026-06-08 at 3.53.59 PM.png"
+        },
+        {
+          subtitle: "Business Impact",
+          content: "By shifting to a dedicated booking platform, the client now owns their traffic, customer data, and revenue funnel. This increases profit margins, improves guest relationships, and turns a single property into a sustainable digital business.",
+          image: "/project assets/Studio448/Screenshot 2026-06-08 at 3.54.13 PM.png"
+        }
+      ]
+    },
+    {
+      id: "opportrix",
+      title: "Opportrix — AI-Powered Freelance Opportunity Aggregator",
+      subtitle: "Freelance Opportunity Aggregator & Lead Generation Platform",
+      category: "Full Stack Development & AI",
+      date: "2026",
+      tech: ["React", "Node.js", "Express", "OpenAI", "MongoDB", "Aggregator"],
+      description: "A full-stack lead generation platform that aggregates freelance opportunities from multiple platforms into a single intelligent feed, helping freelancers discover, track, and respond to high-value opportunities faster.",
+      coverImage: "/project assets/Opportrix/Cover.png",
+      demoLink: "https://opportrix.vercel.app/",
+      codeLink: "https://github.com/MannVaswani4/Opportrix",
+      details: [
+        {
+          subtitle: "The Challenge",
+          content: "Freelancers spend hours switching between LinkedIn, Twitter, Reddit, job boards, and communities searching for opportunities. Valuable leads often get buried under noise, and being late to respond can mean losing potential clients. The challenge was to create a centralized system that eliminates platform hopping, surfaces only relevant opportunities, and helps freelancers engage with prospects before the competition.",
+          image: "/project assets/Opportrix/ChatGPT Image Jun 8, 2026, 04_02_27 PM.png"
+        },
+        {
+          subtitle: "Solution",
+          content: "Opportrix acts as a unified opportunity intelligence platform. It aggregates freelance opportunities from multiple sources into a single feed, allowing users to discover projects, filter opportunities by skills and requirements, and instantly identify high-value leads. The platform combines opportunity discovery, ATS profile analysis, and AI-assisted engagement tools into one streamlined workflow designed specifically for freelancers and independent professionals.",
+          image: "/project assets/Opportrix/ChatGPT Image Jun 8, 2026, 04_03_31 PM.png"
+        },
+        {
+          subtitle: "The System",
+          content: "The platform features a real-time aggregated feed, advanced filtering, ATS profile scoring, AI-generated response suggestions, opportunity prioritization, skill-based matching, and engagement automation tools. Users can connect their profiles, define their expertise, monitor relevant opportunities across platforms, and receive intelligent recommendations that improve lead conversion and visibility.",
+          image: "/project assets/Opportrix/Screenshot 2026-06-08 at 4.04.18 PM.png"
+        },
+        {
+          subtitle: "Business Impact",
+          content: "Opportrix transforms freelance lead generation from a manual, time-consuming process into an automated growth engine. By consolidating multiple opportunity sources into one dashboard, freelancers save hours every week, respond faster to prospects, and increase their chances of securing projects. The platform helps independent professionals focus less on searching for work and more on delivering it, creating a scalable and efficient client acquisition system.",
+          image: "/project assets/Opportrix/Screenshot 2026-06-08 at 4.05.06 PM.png"
+        }
+      ]
+    },
+    {
+      id: "accredian",
+      title: "Accredian Student Communication Dashboard",
+      subtitle: "Communication-First Learning Experience for Online Students",
+      category: "Product Design",
+      date: "2026",
+      tech: ["Product Design", "UX Strategy", "EdTech", "AI Integration", "Community Design"],
+      description: "A communication-first learning experience designed for Accredian that brings doubts, peer discussions, networking, mentorship, and AI-powered support directly into the course journey — reducing dependency on WhatsApp, Telegram, and LinkedIn while increasing student engagement and retention.",
+      coverImage: "/project assets/Accredian/Cover.png",
+      pdfLink: "https://drive.google.com/file/d/1V9Q6j79Q6hFT_okql1xRPrJZao3Qz8wK/view?usp=sharing",
+      details: [
+        {
+          subtitle: "Problem & Opportunity",
+          content: "Students enrolled in online learning platforms often rely on external applications like WhatsApp, Telegram, and LinkedIn for discussions, networking, and doubt solving. While fast and familiar, these platforms create fragmented learning experiences because conversations are disconnected from the actual course context. This reduces engagement within the platform, weakens community bonds among peers, and makes it harder for educators to support students at scale. Accredian, a rapidly growing online education platform, needed a native communication layer that keeps students engaged, supported, and connected — entirely within the course environment."
+        },
+        {
+          subtitle: "The Solution",
+          content: "The Accredian Student Communication Dashboard is a unified, context-aware communication system embedded directly into the learning experience. It includes a Doubt Resolution Hub where students submit course-specific questions, tag instructors or mentors, track response status, and search previously resolved doubts — eliminating the back-and-forth of chat-based support. A structured Peer Discussion Forum with upvoting and expert-marked answers drives collaborative learning. The Cohort Networking Hub enables profile-based peer discovery and direct messaging, keeping students connected without needing LinkedIn."
+        },
+        {
+          subtitle: "AI & Mentorship Features",
+          content: "An AI Doubt Assistant provides instant answers for common questions by drawing from course material, past resolutions, and community answers — with intelligent handoff to human instructors for complex queries. The Live Interaction Layer includes live Q&A sessions, recorded office hours, and interactive polls tied to course milestones. A Progress & Milestone Feed celebrates student achievements, builds a shared sense of momentum, and reinforces community identity throughout the learning journey."
+        },
+        {
+          subtitle: "Design Decisions & Business Impact",
+          content: "Key UX decisions included surfacing the communication hub contextually (per module, not as a global tab), using async-first design to respect timezone diversity, and separating social networking from academic doubt resolution to reduce noise. Expected outcomes include a 35-50% reduction in students leaving the platform for external tools, 2-3x increase in peer interaction rates, and faster doubt resolution that directly correlates with course completion rates — translating to stronger NPS, lower churn, and higher referral rates for Accredian."
+        }
+      ]
+    },
+    {
+      id: "rishiverse",
+      title: "Rishiverse",
+      subtitle: "Unified Student ERP",
+      category: "Full Stack",
+      tech: ["React", "Node.js", "Express", "PostgreSQL"],
+      date: "Aug 2024",
+      description: "A Unified Student ERP system designed to centralize academic workflow management for 5,500+ users.",
+      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdFqznERDNeVt48DX-vQKjjoB9r0IcmnzpIUaWu7FutxSBnABzJ0ta9HBEcOl-cL0E9P-WXmde7Gs_jH6jBUN9Pw__Oh9Ss8JNLIoPTYs2sv4GNq38yhur_iTg1-NizOj4kWExLDVWskg2Uk4u4rqQh98tM495c3JQmBL_zqxaCqPcVYrFNMbi3t65WzWHkPsjHGBKRnXeAcEMkas9lntKcVxNgfp_0Qr4HzdMy69pthDuP0JBVsqLhnFFpSe7H0mgEFjnEAHD7oP0",
       demoLink: "#",
       pdfLink: "#"
     },
     {
-      title: "Rishiverse",
-      subtitle: "Unified Student ERP",
-      tech: ["React", "Node.js", "Express", "PostgreSQL"],
-      date: "Aug 2024",
-      points: [
-        "Centralized platform for 5,500+ students and faculty",
-        "Custom role-based access and integrated data flow",
-        "Digitized 80% of campus operational workflows"
-      ],
-      demoLink: "#",
-      pdfLink: "#"
+      id: "vectordb",
+      title: "VectorDB Optimizer",
+      subtitle: "Pinecone & Milvus Optimization",
+      category: "Systems",
+      tech: ["Go", "gRPC"],
+      date: "2025",
+      description: "High-performance indexing strategies for Pinecone and Milvus databases, reducing query latency by up to 40%.",
+      demoLink: "#"
+    },
+    {
+      id: "sentinel",
+      title: "Sentinel AI Monitor",
+      subtitle: "Model Drift and Bias Monitoring",
+      category: "AI Ops",
+      tech: ["Dask", "FastAPI"],
+      date: "2025",
+      description: "Real-time data drift detection and model bias monitoring for production machine learning prediction pipelines.",
+      demoLink: "#"
+    },
+    {
+      id: "web3identity",
+      title: "Web3 Identity Engine",
+      subtitle: "Decentralized AI identity verification protocol",
+      category: "Security",
+      tech: ["Solidity", "ZK-Snarks"],
+      date: "2025",
+      description: "Decentralized AI identity verification protocol.",
+      coverImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDOTiNuag99HnyV7RiXCfqMS3t5ygtz7zcruBfbZEhHSx2Q9eKw44y-2MntNt993DZdfSIQz1d5lpNXSfyztmnoqM__kX17xx3l7p-Z-7d4gNTFyhTDYUXkUKi6l0uFESHT9Cd6SLgi0eRq5AQT08fXTiDV5D1W4nlRjiQuK8LZsGMoWULbD5H5CZ0b3It7BsT_UrINUnzGUOzOueMc_0n0QmPEsXjjtjhbDilSfc18tfQ5ux9mmO8NBNroJcIQKNthmKGpcs6YjRV4",
+      demoLink: "#"
     }
   ],
 
