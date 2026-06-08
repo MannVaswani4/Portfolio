@@ -106,7 +106,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }
                     rel="noreferrer"
                     className="flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-wider bg-primary-container text-black px-6 py-3.5 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-[0_0_15px_rgba(0,240,255,0.25)]"
                   >
-                    <ExternalLink size={12} /> Live Demo
+                    <ExternalLink size={12} /> {project.demoLink.includes('figma.com') ? 'Figma Design' : 'Live Demo'}
                   </a>
                 )}
                 {project.codeLink && (

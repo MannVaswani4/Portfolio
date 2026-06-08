@@ -67,6 +67,9 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
             } else if (id === 'accredian') {
               colSpan = "md:col-span-4";
               layoutType = "vertical-standard";
+            } else if (id === 'humanness') {
+              colSpan = "md:col-span-8";
+              layoutType = "split-left";
             } else if (id === 'rishiverse') {
               colSpan = "md:col-span-4";
               layoutType = "vertical-standard";
@@ -128,7 +131,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                             onClick={(e) => { e.stopPropagation(); window.open(project.demoLink, '_blank'); }}
                             className="flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-wider bg-primary-container text-black px-5 py-3 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(0,240,255,0.25)]"
                           >
-                            <ExternalLink size={12} /> Live Demo
+                            <ExternalLink size={12} /> {project.demoLink.includes('figma.com') ? 'Figma Design' : 'Live Demo'}
                           </button>
                         )}
                         {project.pdfLink && project.pdfLink !== "#" && (
@@ -182,7 +185,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                             onClick={(e) => { e.stopPropagation(); window.open(project.demoLink, '_blank'); }}
                             className="flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-wider bg-primary-container text-black px-5 py-3 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-[0_0_12px_rgba(0,240,255,0.25)]"
                           >
-                            <ExternalLink size={12} /> Live Demo
+                            <ExternalLink size={12} /> {project.demoLink.includes('figma.com') ? 'Figma Design' : 'Live Demo'}
                           </button>
                         )}
                         {project.pdfLink && project.pdfLink !== "#" && (
@@ -241,7 +244,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                             onClick={(e) => { e.stopPropagation(); window.open(project.demoLink, '_blank'); }}
                             className="flex items-center gap-1.5 font-mono text-[9px] font-bold uppercase tracking-wider bg-primary-container text-black px-4 py-2.5 rounded hover:scale-105 active:scale-95 transition-all shadow-[0_0_10px_rgba(0,240,255,0.2)]"
                           >
-                            <ExternalLink size={10} /> Live Demo
+                            <ExternalLink size={10} /> {project.demoLink.includes('figma.com') ? 'Figma Design' : 'Live Demo'}
                           </button>
                         )}
                         {project.pdfLink && project.pdfLink !== "#" && (
@@ -300,7 +303,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                             onClick={(e) => { e.stopPropagation(); window.open(project.demoLink, '_blank'); }}
                             className="flex items-center gap-1.5 font-mono text-[9px] font-bold uppercase tracking-wider bg-primary-container text-black px-4 py-2.5 rounded hover:scale-105 active:scale-95 transition-all shadow-[0_0_10px_rgba(0,240,255,0.2)]"
                           >
-                            <ExternalLink size={10} /> Live Demo
+                            <ExternalLink size={10} /> {project.demoLink.includes('figma.com') ? 'Figma Design' : 'Live Demo'}
                           </button>
                         )}
                         {project.pdfLink && project.pdfLink !== "#" && (

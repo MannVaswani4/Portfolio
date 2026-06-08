@@ -168,26 +168,24 @@ export const content = {
       details: [
         {
           subtitle: "The Global Problem",
-          content: "Smallholder farmers produce over 70% of the world’s food, yet they operate under extreme risk due to crop disease, water scarcity, and climate instability. 40% of crops are lost due to preventable diseases and poor irrigation, while 60% of freshwater is wasted by inefficient irrigation. Climate unpredictability makes traditional planting calendars unreliable, leaving farmers to make high-stakes decisions based on guesswork."
+          content: "Smallholder farmers produce over 70% of the world’s food, yet they operate under extreme risk due to crop disease, water scarcity, and climate instability. 40% of crops are lost due to preventable diseases and poor irrigation, while 60% of freshwater is wasted by inefficient irrigation. Climate unpredictability makes traditional planting calendars unreliable, leaving farmers to make high-stakes decisions based on guesswork.",
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.21 PM.png"
         },
         {
           subtitle: "The Product Vision",
           content: "Agrilo (also called AgriSphere in the platform architecture) was designed as a digital agronomist — an AI system that translates complex climate, soil, and crop data into simple, daily farming decisions. The goal was to give farmers clear disease diagnoses, precise watering instructions, climate-aware planting guidance, and a single 'what to do today' command center, aligning with UN Sustainable Development Goals 1, 2, 6, and 13.",
-          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.21 PM.png"
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.29 PM.png"
         },
         {
           subtitle: "The AI System",
           content: "Agrilo is powered by OpenEPI datasets and computer vision. After defining their farm boundary via map coordinates, the system analyzes soil composition, forecasts, and crop health signals. Key modules include the AI Crop Doctor (plant disease recognition with ~95% accuracy), Smart Irrigation Advisor (calculates watering requirements to reduce waste by 40%), and Climate-Smart Planner (crop ranking and risk forecasting).",
-          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.29 PM.png"
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.42 PM.png"
         },
         {
           subtitle: "Engineering & Accessibility",
           content: "Designed for low-literacy, low-connectivity, and low-end devices: Agrilo includes a Progressive Web App (PWA) with offline sync, multi-language support (English, Hindi, Spanish, French, German), icon-driven UI, AI voice assistance, and geo-mapped farm boundaries built with a lightweight React frontend and Node.js + MongoDB backend.",
-          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.42 PM.png"
+          image: "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.49 PM.png"
         }
-      ],
-      gallery: [
-        "/project assets/Agrilo/Screenshot 2026-06-08 at 3.50.49 PM.png"
       ]
     },
     {
@@ -283,6 +281,39 @@ export const content = {
         {
           subtitle: "Design Decisions & Business Impact",
           content: "Key UX decisions included surfacing the communication hub contextually (per module, not as a global tab), using async-first design to respect timezone diversity, and separating social networking from academic doubt resolution to reduce noise. Expected outcomes include a 35-50% reduction in students leaving the platform for external tools, 2-3x increase in peer interaction rates, and faster doubt resolution that directly correlates with course completion rates — translating to stronger NPS, lower churn, and higher referral rates for Accredian."
+        }
+      ]
+    },
+    {
+      id: "humanness",
+      title: "Humanness — India-Wide Image & Culture Data Platform",
+      subtitle: "Multimodal Image & Culture Dataset Verification Platform",
+      category: "UI/UX Design",
+      date: "2026",
+      tech: ["Figma", "UI/UX Design", "System Design", "Multimodal Data", "Product Strategy"],
+      description: "A product and system designed to collect, verify, and scale culturally rich image-and-text datasets across every village in India — powering more inclusive and accurate AI models.",
+      coverImage: "/project assets/Humanness/Cover.png",
+      demoLink: "https://www.figma.com/design/ffqvW7ymL6vxpsjBr5MiAt/Mann-Vaswani?node-id=0-1&t=gHxY2JWxhOtLxPBM-1",
+      details: [
+        {
+          subtitle: "The Problem",
+          content: "Modern vision and multimodal AI systems are trained primarily on Western, urban-centric datasets. As a result, these models can identify global landmarks like the Eiffel Tower but fail to recognize Indian cultural, rural, and regional objects such as Durga Puja pandals, Rath Yatra processions, or village handpumps.\n\nThis gap exists because high-quality, geographically verified, and semantically accurate Indian image–text datasets do not exist at sufficient scale. Most available datasets lack location grounding, multilingual labeling, and multi-stage verification, which directly increases model error rates and bias in downstream AI systems.\n\nJoshTalksAI needed a system capable of collecting 1,000+ high-quality image–caption pairs per village while maintaining data integrity, geographic accuracy, and annotation reliability at a national scale.",
+          image: "/project assets/Humanness/Screenshot 2026-06-09 at 12.03.47 AM.png"
+        },
+        {
+          subtitle: "Users & Constraints",
+          content: "The platform serves two fundamentally different user groups:\n\nContributors — NGO partners, field workers, and volunteers operating in low-bandwidth environments, low-end Android devices, multilingual contexts, and minimal training conditions.\n\nReviewers & Admins — Internal data teams responsible for quality assurance, geographic coverage tracking, annotation accuracy, and dataset readiness for AI training.\n\nThe core challenge was building a system that is simple enough for rural contributors but powerful enough for data scientists and operations teams managing nationwide dataset pipelines.",
+          image: "/project assets/Humanness/Screenshot 2026-06-09 at 12.04.06 AM.png"
+        },
+        {
+          subtitle: "The Product & System",
+          content: "I designed and documented the entire system through a full Product Requirements Document (PRD), defining user roles, data pipelines, quality gates, and success metrics before building flows and UI.\n\nThe platform enables contributors to capture or upload images, auto-tag GPS location with manual override, add short multilingual descriptions, work offline and sync later, and review/confirm before submission.\n\nOn the backend, the admin system provides district-wise coverage heat maps, submission queues (pending, approved, rejected), image + metadata verification tools, filters by state, district, contributor, and date, and progress tracking toward the 1,000-image target per village. This converts raw crowd-sourced inputs into a structured, auditable, and model-ready dataset suitable for training vision-language models like CLIP or GPT-4V.",
+          image: "/project assets/Humanness/Screenshot 2026-06-09 at 12.04.28 AM.png"
+        },
+        {
+          subtitle: "The Impact",
+          content: "The platform transforms millions of decentralized, low-quality inputs into a national-scale, culturally representative, and verification-backed AI dataset.\n\nBy enforcing location validation, caption quality, reviewer approval, and coverage tracking, the system directly improves training data accuracy, cultural representation, and model generalization across Indian contexts.\n\nThis reduces vision model bias, improves recognition accuracy, and enables JoshTalksAI to deliver 98–99% word- and image-level correctness — making AI systems more inclusive, fair, and useful for India.",
+          image: "/project assets/Humanness/Screenshot 2026-06-09 at 12.04.37 AM.png"
         }
       ]
     },
