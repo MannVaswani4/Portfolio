@@ -15,7 +15,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   className = ""
 }) => {
   return (
-    <div className={`relative overflow-hidden ${width} ${className}`}>
+    <div className={`relative ${width} ${className}`}>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 30 },
