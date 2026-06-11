@@ -12,6 +12,7 @@ export interface TechItem {
 interface ThreeDMarqueeProps {
   items?: TechItem[];
   className?: string;
+  variant?: 'logos' | 'images';
 }
 
 const defaultTechItems: TechItem[] = [
@@ -37,6 +38,7 @@ const defaultTechItems: TechItem[] = [
 export const ThreeDMarquee = ({
   items = defaultTechItems,
   className,
+  variant = 'logos',
 }: ThreeDMarqueeProps) => {
   const chunkSize = Math.ceil(items.length / 3);
   const chunks = Array.from({ length: 3 }, (_, colIndex) => {
@@ -78,7 +80,10 @@ export const ThreeDMarquee = ({
                 >
                   {doubleSubarray.map((item, imageIndex) => (
                     <div 
-                      className='relative w-full aspect-[4/3] rounded-2xl glass-card flex flex-col items-center justify-center p-5 border border-outline-variant/15 hover:border-primary-container/40 transition-all duration-300 group/card bg-surface-lowest/70 backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.45)]' 
+                      className={cn(
+                        'relative w-full aspect-[4/3] rounded-2xl glass-card flex flex-col items-center justify-center border border-outline-variant/15 hover:border-primary-container/40 transition-all duration-300 group/card bg-surface-lowest/70 backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.45)]',
+                        variant === 'images' ? 'p-0 overflow-hidden' : 'p-5'
+                      )}
                       key={imageIndex + item.name}
                     >
                       {/* Glowing effect inside card */}
@@ -86,7 +91,9 @@ export const ThreeDMarquee = ({
                       
                       <img
                         className={cn(
-                          'h-24 w-24 max-sm:h-18 max-sm:w-18 object-contain select-none transition-transform duration-300 group-hover/card:scale-110',
+                          variant === 'images'
+                            ? 'w-full h-full object-cover select-none transition-transform duration-300 group-hover/card:scale-110'
+                            : 'h-24 w-24 max-sm:h-18 max-sm:w-18 object-contain select-none transition-transform duration-300 group-hover/card:scale-110',
                           item.invert && 'invert brightness-200'
                         )}
                         src={item.logo}
@@ -94,9 +101,11 @@ export const ThreeDMarquee = ({
                         alt={item.name}
                         loading="lazy"
                       />
-                      <span className='font-mono text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-3 group-hover/card:text-primary-container transition-colors'>
-                        {item.name}
-                      </span>
+                      {variant === 'logos' && (
+                        <span className='font-mono text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-3 group-hover/card:text-primary-container transition-colors'>
+                          {item.name}
+                        </span>
+                      )}
                     </div>
                   ))}
                 </motion.figure>

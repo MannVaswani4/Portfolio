@@ -22,7 +22,7 @@ export const SocialLinks: React.FC = () => {
             {/* LinkedIn */}
             <a 
               className="group flex flex-col items-center gap-3" 
-              href="https://linkedin.com/in/mannvaswani"
+              href="https://www.linkedin.com/in/mann-vaswani-953217291/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -35,7 +35,7 @@ export const SocialLinks: React.FC = () => {
             {/* GitHub */}
             <a 
               className="group flex flex-col items-center gap-3" 
-              href="https://github.com/mannvaswani"
+              href="https://github.com/MannVaswani4"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -48,7 +48,7 @@ export const SocialLinks: React.FC = () => {
             {/* Instagram */}
             <a 
               className="group flex flex-col items-center gap-3" 
-              href="https://instagram.com/mannvaswani"
+              href="https://www.instagram.com/mann_vaswani/"
               target="_blank"
               rel="noopener noreferrer"
             >

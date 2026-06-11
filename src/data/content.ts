@@ -393,8 +393,8 @@ export const content = {
   ],
 
   socials: [
-    { name: "LinkedIn", url: "https://linkedin.com/in/mannvaswani" },
-    { name: "GitHub", url: "https://github.com/mannvaswani" },
-    { name: "Instagram", url: "https://instagram.com/mannvaswani" }
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/mann-vaswani-953217291/" },
+    { name: "GitHub", url: "https://github.com/MannVaswani4" },
+    { name: "Instagram", url: "https://www.instagram.com/mann_vaswani/" }
   ]
 };

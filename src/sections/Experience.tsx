@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { content } from '../data/content';
 import { MapPin, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThreeDMarquee } from '../components/ui/3d-marquee';
+import type { TechItem } from '../components/ui/3d-marquee';
 
 const skillsMap: Record<string, string[]> = {
   "RealtyEaseAI": ["AI Strategy", "CRM Automation", "PropTech", "Outbound Growth"],
@@ -12,11 +14,50 @@ const skillsMap: Record<string, string[]> = {
 };
 
 const imageMap: Record<string, string[]> = {
-  "RealtyEaseAI": ["/IMG2.jpg", "/IMG3.png"],
-  "MoveInSync": ["/IMG4.png"],
-  "Rishihood University": ["/IMG5.png"],
-  "Praxto Designs": ["/IMG6.png", "/IMG7.png"]
+  "RealtyEaseAI": [
+    "/experience/RealtyEaseAI/realty_1.png",
+    "/experience/RealtyEaseAI/realty_2.png"
+  ],
+  "MoveInSync": [
+    "/experience/MoveInSync/moveinsync_1.jpg",
+    "/experience/MoveInSync/moveinsync_2.jpg",
+    "/experience/MoveInSync/moveinsync_3.jpg"
+  ],
+  "Rishihood University": [
+    "/experience/Rishihood/rishihood_1.png",
+    "/experience/Rishihood/rishihood_2.png",
+    "/experience/Rishihood/rishihood_3.png",
+    "/experience/Rishihood/rishihood_4.png"
+  ],
+  "Praxto Designs": [
+    "/experience/PraxtoDesigns/praxto_1.png",
+    "/experience/PraxtoDesigns/praxto_2.png"
+  ],
+  "Harvard Project for Asian and International Relations (HPAIR)": [
+    "/experience/HPAIR/hpair_1.jpg",
+    "/experience/HPAIR/hpair_2.jpg",
+    "/experience/HPAIR/hpair_3.jpg",
+    "/experience/HPAIR/hpair_4.jpg"
+  ]
 };
+
+const marqueeItems: TechItem[] = [
+  { name: "RealtyEaseAI 1", logo: "/experience/RealtyEaseAI/realty_1.png" },
+  { name: "RealtyEaseAI 2", logo: "/experience/RealtyEaseAI/realty_2.png" },
+  { name: "MoveInSync 1", logo: "/experience/MoveInSync/moveinsync_1.jpg" },
+  { name: "MoveInSync 2", logo: "/experience/MoveInSync/moveinsync_2.jpg" },
+  { name: "MoveInSync 3", logo: "/experience/MoveInSync/moveinsync_3.jpg" },
+  { name: "Rishihood 1", logo: "/experience/Rishihood/rishihood_1.png" },
+  { name: "Rishihood 2", logo: "/experience/Rishihood/rishihood_2.png" },
+  { name: "Rishihood 3", logo: "/experience/Rishihood/rishihood_3.png" },
+  { name: "Rishihood 4", logo: "/experience/Rishihood/rishihood_4.png" },
+  { name: "Praxto Designs 1", logo: "/experience/PraxtoDesigns/praxto_1.png" },
+  { name: "Praxto Designs 2", logo: "/experience/PraxtoDesigns/praxto_2.png" },
+  { name: "HPAIR 1", logo: "/experience/HPAIR/hpair_1.jpg" },
+  { name: "HPAIR 2", logo: "/experience/HPAIR/hpair_2.jpg" },
+  { name: "HPAIR 3", logo: "/experience/HPAIR/hpair_3.jpg" },
+  { name: "HPAIR 4", logo: "/experience/HPAIR/hpair_4.jpg" }
+];
 
 // Company logo component using provided files in public/logos
 const CompanyLogo: React.FC<{ company: string }> = ({ company }) => {
@@ -85,14 +126,12 @@ export const Experience: React.FC = () => {
     <section 
       id="experience" 
       className="py-24 relative bg-background text-on-surface overflow-hidden"
-      style={{
-        backgroundImage: "linear-gradient(rgba(19, 19, 19, 0.88), rgba(19, 19, 19, 0.88)), url('/BG image.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        backgroundRepeat: "no-repeat"
-      }}
     >
+      {/* Background 3D Marquee for Experience Images */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-[0.09]">
+        <ThreeDMarquee items={marqueeItems} variant="images" className="h-full w-full scale-[1.6] translate-x-[-8%]" />
+      </div>
+
       <div className="container mx-auto px-6 max-w-[1440px] relative z-10">
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-20">
@@ -270,7 +309,7 @@ export const Experience: React.FC = () => {
                       <img
                         src={imageMap[activeExp.company][activeImgIdx]}
                         alt={`${activeExp.company} showcase ${activeImgIdx + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-500"
+                        className="w-full h-full object-contain transition-transform duration-500"
                       />
                       
                       <button
