@@ -4,10 +4,56 @@ import { Play, Pause, Volume2, VolumeX, ChevronDown, Radio } from 'lucide-react'
 import { content } from '../../data/content';
 import styles from './VideoIntro.module.css';
 
+const IMAGES_TO_PRELOAD = [
+  // Profile
+  '/MannAnimated.png',
+  // Project Covers
+  '/project assets/Deceptivision/Cover.png',
+  '/project assets/TripAdvisor/Cover.png',
+  '/project assets/Agrilo/Cover.png',
+  '/project assets/Studio448/Cover.png',
+  '/project assets/Opportrix/Cover.png',
+  '/project assets/Accredian/Cover.png',
+  '/project assets/Humanness/Cover.png',
+  '/project assets/Global/Cover.png',
+  // Certifications
+  '/AIforprod.png',
+  '/PMbasics.png',
+  // Logos
+  '/logos/NewtonSchool.png',
+  '/logos/ScholarsDen.png',
+  '/logos/MoveInSync.png',
+  '/logos/Rishihood.png',
+  '/logos/RealtyEaseAI.png',
+  '/logos/PraxtoDesigns.png',
+  '/logos/HPAIR.png',
+  // Experience Gallery
+  '/experience/RealtyEaseAI/realty_1.png',
+  '/experience/RealtyEaseAI/realty_2.png',
+  '/experience/MoveInSync/moveinsync_1.jpg',
+  '/experience/MoveInSync/moveinsync_2.jpg',
+  '/experience/MoveInSync/moveinsync_3.jpg',
+  '/experience/Rishihood/rishihood_1.png',
+  '/experience/Rishihood/rishihood_2.png',
+  '/experience/Rishihood/rishihood_3.png',
+  '/experience/Rishihood/rishihood_4.png',
+  '/experience/PraxtoDesigns/praxto_1.png',
+  '/experience/PraxtoDesigns/praxto_2.png',
+  '/experience/HPAIR/hpair_1.jpg',
+  '/experience/HPAIR/hpair_2.jpg',
+  '/experience/HPAIR/hpair_3.jpg',
+  '/experience/HPAIR/hpair_4.jpg'
+];
+
 export const VideoIntro: React.FC = () => {
   const [hasStarted, setHasStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false); // Default to unmuted once started
+
+  // Preloading States
+  const [preloadProgress, setPreloadProgress] = useState(0);
+  const [isPreloaded, setIsPreloaded] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -17,6 +63,73 @@ export const VideoIntro: React.FC = () => {
   const textRightRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Asset Preloading Logic
+  useEffect(() => {
+    let loadedCount = 0;
+    const total = IMAGES_TO_PRELOAD.length;
+
+    if (total === 0) {
+      setIsPreloaded(true);
+      setPreloadProgress(100);
+      return;
+    }
+
+    const handleImageLoad = () => {
+      loadedCount++;
+      const progress = Math.round((loadedCount / total) * 100);
+      setPreloadProgress(progress);
+      if (loadedCount === total) {
+        setIsPreloaded(true);
+      }
+    };
+
+    const handleImageError = () => {
+      handleImageLoad(); // Count failed images to avoid getting stuck
+    };
+
+    IMAGES_TO_PRELOAD.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = handleImageLoad;
+      img.onerror = handleImageError;
+    });
+
+    // Fail-safe: transition after 8 seconds anyway to keep the experience accessible
+    const timer = setTimeout(() => {
+      setIsPreloaded(true);
+      setIsVideoReady(true);
+      setPreloadProgress(100);
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Monitor Video Readiness
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const checkVideoState = () => {
+      if (video.readyState >= 3) {
+        setIsVideoReady(true);
+      }
+    };
+
+    checkVideoState();
+
+    const handleCanPlay = () => {
+      setIsVideoReady(true);
+    };
+
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('canplaythrough', handleCanPlay);
+    
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('canplaythrough', handleCanPlay);
+    };
+  }, []);
 
   const scrollToNextSection = () => {
     const nextSection = document.getElementById('about');
@@ -197,6 +310,8 @@ export const VideoIntro: React.FC = () => {
   const firstName = nameParts[0] || 'MANN';
   const lastName = nameParts.slice(1).join(' ') || 'VASWANI';
 
+  const readyToEnter = isPreloaded && isVideoReady;
+
   return (
     <div
       ref={containerRef}
@@ -211,10 +326,27 @@ export const VideoIntro: React.FC = () => {
         className={`${styles.enterOverlay} ${hasStarted ? styles.enterOverlayHidden : ''}`}
       >
         <span className={styles.enterTitle}>MANN VASWANI • PORTFOLIO</span>
-        <button className={styles.enterBtn} onClick={handleStartExperience}>
-          <Radio size={14} className="animate-pulse" />
-          Enter Experience
-        </button>
+        {!readyToEnter ? (
+          <div className={styles.preloadContainer}>
+            <div className={styles.preloadBarTrack}>
+              <div 
+                className={styles.preloadBarFill} 
+                style={{ width: `${preloadProgress}%` }}
+              />
+            </div>
+            <span className={styles.preloadText}>
+              Loading Experience {preloadProgress}%
+            </span>
+            <span className={styles.preloadSubtext}>
+              Preloading assets for peak performance
+            </span>
+          </div>
+        ) : (
+          <button className={styles.enterBtn} onClick={handleStartExperience}>
+            <Radio size={14} className="animate-pulse" />
+            Enter Experience
+          </button>
+        )}
       </div>
 
       {/* 2. Fullscreen Video Background */}

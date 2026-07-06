@@ -46,6 +46,16 @@ const videos: VideoItem[] = [
 export const Journey: React.FC = () => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [activeVideo, setActiveVideo] = useState<VideoItem | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -67,8 +77,8 @@ export const Journey: React.FC = () => {
   }, [activeVideo]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-background">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-12">
+    <section ref={targetRef} className="relative md:h-[300vh] h-auto bg-background">
+      <div className="relative md:sticky md:top-0 md:h-screen h-auto flex flex-col justify-center overflow-hidden py-12">
         <header className="container mx-auto px-6 w-full space-y-4 mb-8">
           <ScrollReveal delay={0.1}>
             <div className="flex items-center gap-2 mb-1">
@@ -95,12 +105,15 @@ export const Journey: React.FC = () => {
           </ScrollReveal>
         </header>
         
-        <motion.div style={{ x }} className="flex gap-8 px-6 ml-6 md:ml-24 w-max">
+        <motion.div 
+          style={{ x: isMobile ? 0 : x }} 
+          className="flex gap-6 md:gap-8 px-6 ml-0 md:ml-24 w-auto md:w-max overflow-x-auto md:overflow-visible hide-scrollbar snap-x snap-mandatory md:snap-none pb-4"
+        >
           {videos.map((video) => (
             <div 
               key={video.id} 
               onClick={() => setActiveVideo(video)}
-              className="w-[85vw] md:w-[50vw] lg:w-[35vw] h-[67vh] rounded-xl glass-card flex flex-col justify-between relative overflow-hidden group cursor-pointer border border-outline-variant/15 hover:border-primary-container/30 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,240,255,0.06)]"
+              className="w-[80vw] md:w-[50vw] lg:w-[35vw] h-[60vh] md:h-[67vh] rounded-xl glass-card flex flex-col justify-between relative overflow-hidden group cursor-pointer border border-outline-variant/15 hover:border-primary-container/30 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,240,255,0.06)] shrink-0 snap-center"
             >
               {/* YouTube Logo (Top Left overlay) */}
               <div className="absolute top-4 left-4 z-20 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-1.5 shadow-md">
